@@ -1,0 +1,6 @@
+# Project files are LF (VS Code files.eol = 
+); keep them that way on every OS.
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.bin binary

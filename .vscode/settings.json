@@ -1,0 +1,20 @@
+{
+    "idf.extensionActivationMode": "always",
+    "idf.port": "COM6",
+    "idf.flashType": "UART",
+    "terminal.integrated.profiles.windows": {
+        "ESP-IDF v6.1 (wifiblu)": {
+            "path": "powershell.exe",
+            "args": [
+                "-NoProfile", "-NoExit", "-ExecutionPolicy", "Bypass",
+                "-Command", ". '${workspaceFolder}/tools/Enter-EspIdf.ps1'"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "ESP-IDF v6.1 (wifiblu)",
+    "search.exclude": {
+        "**/build/**": true
+    },
+    "files.eol": "\n",
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
+}

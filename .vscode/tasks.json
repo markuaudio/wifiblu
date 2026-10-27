@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "ESP32: Build wifiblu",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tools/Build.ps1"],
+            "options": {"cwd": "${workspaceFolder}"},
+            "group": {"kind": "build", "isDefault": true},
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "ESP32: Flash wifiblu (COM6)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tools/Flash.ps1"],
+            "options": {"cwd": "${workspaceFolder}"},
+            "problemMatcher": []
+        },
+        {
+            "label": "ESP32: Live call/music logs (COM6)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tools/Monitor.ps1"],
+            "options": {"cwd": "${workspaceFolder}"},
+            "presentation": {"reveal": "always", "focus": true, "panel": "dedicated"},
+            "problemMatcher": []
+        }
+    ]
+}

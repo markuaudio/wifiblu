@@ -1,0 +1,5 @@
+build/
+sdkconfig.old
+debug.log
+docs/live-serial.log
+docs-hinglish/
