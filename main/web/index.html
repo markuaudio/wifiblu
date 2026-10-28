@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>wifi blu</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--text:#1c1f24;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--ok:#16a34a;--warn:#d97706;--bad:#dc2626}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#171a21;--text:#e6e8ec;--muted:#9aa3b2;--line:#262b35;--accent:#60a5fa}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{padding:20px 16px 8px}h1{margin:0;font-size:22px}h1 small{color:var(--muted);font-weight:400;font-size:14px;margin-left:8px}
+main{padding:0 16px 32px;max-width:640px;margin:0 auto}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0}
+h2{margin:0 0 10px;font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.row{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--line)}.row:first-of-type{border-top:0}
+.row span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button{font:inherit;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}button.danger{color:var(--bad);border-color:var(--bad)}
+button:disabled{opacity:.5;cursor:default}
+input[type=text],input[type=password],select{font:inherit;width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);margin:6px 0}
+input[type=range]{width:100%}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:var(--muted)}.dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}.dot.bad{background:var(--bad)}
+.note{color:var(--muted);font-size:14px;margin:6px 0 0}
+progress{width:100%;height:10px}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .2s;pointer-events:none}
+#toast.show{opacity:1}
+</style>
+</head>
+<body>
+<header><h1>wifi blu <small id="ver"></small></h1></header>
+<main>
+
+<section id="setup" hidden>
+  <h2>Wi-Fi setup</h2>
+  <p class="note">Pick your home network and enter its password. The speaker joins it and this hotspot closes. <span id="setupleft"></span></p>
+  <select id="nets"><option value="">Scanning...</option></select>
+  <input type="text" id="ssid" placeholder="Network name" maxlength="32">
+  <input type="password" id="pass" placeholder="Password (leave empty for open network)" maxlength="64">
+  <div class="btns"><button class="primary" onclick="join()">Join</button><button onclick="scan()">Rescan</button></div>
+  <p class="note" id="joinmsg"></p>
+</section>
+
+<section>
+  <h2>Status</h2>
+  <div class="row"><span>Bluetooth</span><span><i class="dot" id="btdot"></i><span id="bt">-</span></span></div>
+  <div class="row"><span>Phone</span><span id="peer">-</span></div>
+  <div class="row"><span>Call</span><span id="call">-</span></div>
+  <div class="row"><span>Wi-Fi</span><span><i class="dot" id="wfdot"></i><span id="wf">-</span></span></div>
+  <div class="row"><span>Address</span><span id="addr">-</span></div>
+</section>
+
+<section>
+  <h2>Music and calls</h2>
+  <input type="range" id="vol" min="0" max="100" step="1" onchange="cmd('vol',{v:this.value})">
+  <div class="row"><span>Volume</span><span id="volv">-</span></div>
+  <div class="btns">
+    <button onclick="cmd('play')">Play / Pause</button><button onclick="cmd('next')">Next</button>
+    <button onclick="cmd('voldown')">Vol -</button><button onclick="cmd('volup')">Vol +</button>
+  </div>
+  <div class="btns" id="callbtns" hidden>
+    <button class="primary" onclick="cmd('answer')">Answer</button><button class="danger" onclick="cmd('hangup')">Hang up</button>
+  </div>
+  <div class="btns">
+    <button onclick="cmd('connect')">Connect phone</button><button onclick="cmd('disconnect')">Disconnect</button>
+  </div>
+</section>
+
+<section>
+  <h2>Firmware update</h2>
+  <p class="note">Choose <b>wifiblu.bin</b>. Pause music first: the upload shares the radio with Bluetooth. The speaker reboots into the new firmware and returns to the old one if the new one does not start.</p>
+  <input type="file" id="fw" accept=".bin">
+  <div class="btns"><button class="primary" id="upbtn" onclick="upload()">Upload and reboot</button></div>
+  <progress id="prog" value="0" max="100" hidden></progress>
+  <p class="note" id="upmsg"></p>
+</section>
+
+<section>
+  <h2>Device</h2>
+  <div class="row"><span>Firmware</span><span id="sys">-</span></div>
+  <div class="row"><span>Free memory</span><span id="heap">-</span></div>
+  <div class="row"><span>Uptime</span><span id="up">-</span></div>
+  <div class="row"><span>Paired phones</span><span id="bonds">-</span></div>
+  <div class="btns">
+    <button onclick="cmd('selftest')">Power self-test</button>
+    <button onclick="cmd('wifi_setup')">Open setup hotspot</button>
+    <button class="danger" onclick="confirm('Forget all paired phones?')&&cmd('forget_bonds')">Forget phones</button>
+    <button class="danger" onclick="confirm('Forget the Wi-Fi network? The setup hotspot opens again.')&&cmd('wifi_forget')">Forget Wi-Fi</button>
+    <button onclick="cmd('reboot')">Reboot</button>
+  </div>
+</section>
+</main>
+<div id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+let toastT;function toast(m){$('toast').textContent=m;$('toast').classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>$('toast').classList.remove('show'),2500)}
+async function cmd(c,extra){const q=new URLSearchParams(Object.assign({c},extra||{}));try{const r=await fetch('/api/cmd?'+q,{method:'POST'});const j=await r.json();toast(j.ok?('OK: '+c):(j.error||'failed'))}catch(e){toast('no reply')}setTimeout(refresh,400)}
+function fmtUp(s){const d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);return (d?d+'d ':'')+h+'h '+m+'m'}
+let scanned=false,volDrag=false;
+$('vol').addEventListener('input',()=>{volDrag=true;$('volv').textContent=$('vol').value+'%'});
+$('vol').addEventListener('change',()=>{volDrag=false});
+async function refresh(){
+  let s;try{s=await (await fetch('/api/status')).json()}catch(e){$('bt').textContent='no reply';return}
+  $('ver').textContent='v'+s.sys.version;
+  const b=s.bt;$('bt').textContent=b.music||b.calls?('connected ('+(b.music?'music':'')+(b.music&&b.calls?' + ':'')+(b.calls?'calls':'')+')'):(b.discoverable?'visible, waiting for a phone':'reconnecting...');
+  $('btdot').className='dot '+(b.music||b.calls?'ok':'warn');
+  $('peer').textContent=b.peer;$('call').textContent=s.call.state+(s.call.state!=='idle'?' (vol '+s.call.volume+'/15)':'');
+  $('callbtns').hidden=s.call.state==='idle';
+  const w=s.wifi;let wt=w.mode==='setup'?('setup hotspot open'+(w.connected?', also joined '+w.ssid:'')):(w.connected?w.ssid+' ('+w.rssi+' dBm)':(w.saved?w.ssid+': '+w.result:'no network saved'));
+  $('wf').textContent=wt;$('wfdot').className='dot '+(w.connected?'ok':(w.mode==='setup'?'warn':'bad'));
+  $('addr').textContent=w.connected?('http://'+w.host+'  '+w.ip):'-';
+  if(!volDrag){$('vol').value=s.audio.volume;$('volv').textContent=s.audio.volume+'%'}
+  $('sys').textContent='v'+s.sys.version+' in '+s.sys.slot+', DAC P'+s.audio.dac;
+  $('heap').textContent=Math.round(s.sys.heap/1024)+' KB (min '+Math.round(s.sys.heap_min/1024)+' KB)';
+  $('up').textContent=fmtUp(s.sys.uptime);$('bonds').textContent=b.bonds;
+  const setup=w.mode==='setup';$('setup').hidden=!setup;
+  if(setup){$('setupleft').textContent='Closes in '+Math.ceil(w.setup_left/60)+' min.';if(!scanned){scanned=true;scan()}
+    if(w.result!=='-')$('joinmsg').textContent=w.result==='joined'?('Joined '+w.ssid+'. Reconnect your phone to '+w.ssid+' and open http://'+w.host+'/'):w.result}
+}
+async function scan(){$('nets').innerHTML='<option value="">Scanning...</option>';try{const j=await (await fetch('/api/scan')).json();
+  $('nets').innerHTML='<option value="">Choose a network</option>'+j.networks.map(n=>`<option value="${n.ssid.replace(/"/g,'&quot;')}">${n.ssid} (${n.rssi} dBm${n.secure?'':', open'})</option>`).join('');
+  }catch(e){$('nets').innerHTML='<option value="">Scan failed, type the name</option>'}}
+$('nets').addEventListener('change',()=>{$('ssid').value=$('nets').value});
+async function join(){const ssid=$('ssid').value.trim(),pass=$('pass').value;if(!ssid){toast('Enter the network name');return}
+  $('joinmsg').textContent='Joining '+ssid+'...';
+  const r=await fetch('/api/wifi',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'ssid='+encodeURIComponent(ssid)+'&pass='+encodeURIComponent(pass)});
+  const j=await r.json();if(!j.ok)$('joinmsg').textContent=j.error}
+function upload(){const f=$('fw').files[0];if(!f){toast('Choose wifiblu.bin first');return}
+  if(!confirm('Upload '+f.name+' ('+Math.round(f.size/1024)+' KB) and reboot?'))return;
+  const x=new XMLHttpRequest();$('prog').hidden=false;$('upbtn').disabled=true;$('upmsg').textContent='Uploading...';
+  x.upload.onprogress=e=>{if(e.lengthComputable)$('prog').value=Math.round(e.loaded*100/e.total)};
+  x.onload=()=>{let j={};try{j=JSON.parse(x.responseText)}catch(e){}$('upmsg').textContent=j.ok?'Written. Rebooting, this page reloads in 20 s.':('Failed: '+(j.error||x.status));$('upbtn').disabled=false;if(j.ok)setTimeout(()=>location.reload(),20000)};
+  x.onerror=()=>{$('upmsg').textContent='Connection lost during upload';$('upbtn').disabled=false};
+  x.open('POST','/update');x.setRequestHeader('Content-Type','application/octet-stream');x.send(f)}
+refresh();setInterval(refresh,2000);
+</script>
+</body>
+</html>

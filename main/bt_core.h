@@ -21,4 +21,11 @@ void bt_core_connect_last(void);    // user request: reconnect to the newest bon
 void bt_core_forget_all(void);      // remove every bond (phone must pair again)
 void bt_core_list_bonds(void);
 void bt_core_log_status(void);
+typedef struct {
+    bool music_up, calls_up, discoverable, have_peer;
+    char peer[18], own[18];
+    unsigned reconnect_attempts;
+    int bonds;
+} bt_status_t;
+void bt_core_get_status(bt_status_t *out); // snapshot for the web page
 const char *bt_core_bda_str(const uint8_t *bda, char out[18]);

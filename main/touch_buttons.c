@@ -16,9 +16,9 @@ static float baseline[4];
 
 static void touch_task(void *arg)
 {
-    bool pressed[4] = {0}, candidate[4] = {0}, long_sent[4] = {0};
+    bool pressed[4] = {0}, candidate[4] = {0}, long_sent[4] = {0}, setup_sent = false;
     int64_t changed[4] = {0}, down[4] = {0}, repeated[4] = {0};
-    ESP_LOGI("touch", "Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect), VOL +/-");
+    ESP_LOGI("touch", "Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold %d s: Wi-Fi setup), VOL +/-", WIFI_SETUP_HOLD_S);
     while (1) {
         int64_t now = esp_timer_get_time();
         for (unsigned i = 0; i < 4; ++i) {
@@ -32,7 +32,7 @@ static void touch_task(void *arg)
             if (active != pressed[i] && now - changed[i] >= 60000) {
                 pressed[i] = active;
                 if (active) {
-                    down[i] = repeated[i] = now; long_sent[i] = false;
+                    down[i] = repeated[i] = now; long_sent[i] = false; if (i == 1) setup_sent = false;
                     ESP_LOGI("touch", "%s pressed (raw=%"PRIu32")", names[i], raw[0]);
                     if (i == 0) app_key(KEY_PLAY);
                     if (i == 2) app_key(KEY_VOL_UP);
@@ -41,6 +41,9 @@ static void touch_task(void *arg)
             }
             if (pressed[i] && i == 1 && !long_sent[i] && now - down[i] >= 2000000) {
                 long_sent[i] = true; app_key(KEY_DISCONNECT);
+            }
+            if (pressed[i] && i == 1 && !setup_sent && now - down[i] >= WIFI_SETUP_HOLD_S * 1000000LL) {
+                setup_sent = true; app_key(KEY_WIFI_SETUP);
             }
             if (pressed[i] && i >= 2 && now - down[i] >= 500000 && now - repeated[i] >= 200000) {
                 repeated[i] = now; app_key(i == 2 ? KEY_VOL_UP : KEY_VOL_DOWN);

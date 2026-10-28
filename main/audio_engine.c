@@ -205,6 +205,11 @@ void audio_engine_calibrate(void)
 {
     portENTER_CRITICAL(&lock); cal_pending = true; ++st.epoch; portEXIT_CRITICAL(&lock);
 }
+unsigned audio_engine_dac_profile(void)
+{
+    portENTER_CRITICAL(&lock); unsigned p = st.dac_profile; portEXIT_CRITICAL(&lock);
+    return p;
+}
 void audio_engine_log_status(void)
 {
     portENTER_CRITICAL(&lock); st.diagnose = true; portEXIT_CRITICAL(&lock);

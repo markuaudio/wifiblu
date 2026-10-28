@@ -1,4 +1,9 @@
-# Name, Type, SubType, Offset, Size, Flags
-nvs,data,nvs,0x9000,0x6000,
-phy_init,data,phy,0xf000,0x1000,
-factory,app,factory,0x10000,0x300000,
+# wifiblu partition table (8 MB flash): two app slots for over-the-air updates.
+# The bootloader boots the slot named in otadata; a new image that never calls
+# esp_ota_mark_app_valid_cancel_rollback() is rolled back on the next reset.
+# Name,     Type, SubType, Offset,   Size,     Flags
+nvs,        data, nvs,     0x9000,   0x6000,
+otadata,    data, ota,     0xf000,   0x2000,
+phy_init,   data, phy,     0x11000,  0x1000,
+ota_0,      app,  ota_0,   0x20000,  0x300000,
+ota_1,      app,  ota_1,   0x320000, 0x300000,

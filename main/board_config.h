@@ -84,3 +84,17 @@
 #define LINK_RECONNECT_SLOW_PERIOD_S 45
 #define LINK_PAGE_TIMEOUT 0x2000 // 5.12 s per attempt (controller default); 0x4000 = 10 s
 #define LINK_PROFILE_FOLLOWUP_S 4 // after one profile (or pairing) is up, open the other one ourselves
+
+// Wi-Fi (Phase 1). Station mode on the home network in normal use; the setup
+// hotspot (SoftAP + captive portal) runs only while no network is saved, after
+// a SET hold of WIFI_SETUP_HOLD_S seconds, or console 'W', and closes itself
+// after WIFI_SETUP_TIMEOUT_S or once the device has joined a network.
+// Coexistence rule (docs/00-wifi-options.md): SoftAP next to Bluetooth is
+// unstable, station mode is fine, heavy traffic during a call hurts the call.
+#define WIFI_HOSTNAME "wifiblu"          // http://wifiblu.local/
+#define WIFI_SETUP_SSID "wifi blu setup"
+#define WIFI_SETUP_PASSWORD ""           // "" = open hotspot; 8+ characters = WPA2
+#define WIFI_SETUP_TIMEOUT_S 600
+#define WIFI_SETUP_HOLD_S 6              // SET pad hold (2 s = disconnect still fires first)
+#define WIFI_RECONNECT_PERIOD_S 10       // station: retry the saved network forever
+#define OTA_VALID_AFTER_S 45             // new image confirms itself once Bluetooth is ready and this time passed

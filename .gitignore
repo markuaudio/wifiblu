@@ -3,3 +3,5 @@ sdkconfig.old
 debug.log
 docs/live-serial.log
 docs-hinglish/
+managed_components/
+sdkconfig

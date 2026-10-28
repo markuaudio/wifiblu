@@ -397,6 +397,18 @@ void bt_core_log_status(void)
              bt_core_bda_str(esp_bt_dev_get_address(), str));
 }
 
+void bt_core_get_status(bt_status_t *o)
+{
+    esp_bd_addr_t peer;
+    portENTER_CRITICAL(&lock);
+    o->music_up = s.a2dp_up; o->calls_up = s.hfp_up; o->discoverable = s.discoverable; o->have_peer = s.have_peer;
+    o->reconnect_attempts = s.attempts; memcpy(peer, s.peer, 6);
+    portEXIT_CRITICAL(&lock);
+    if (o->have_peer) bt_core_bda_str(peer, o->peer); else strcpy(o->peer, "-");
+    bt_core_bda_str(esp_bt_dev_get_address(), o->own);
+    o->bonds = esp_bt_gap_get_bond_device_num();
+}
+
 esp_err_t bt_core_radio_init(void)
 {
     ESP_LOGI(TAG, "Starting Bluetooth radio before codec/I2S/touch initialization");

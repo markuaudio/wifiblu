@@ -1,4 +1,4 @@
-// bleaudiocall: LyraT v4.3 Bluetooth speaker that also takes phone calls.
+// wifiblu: LyraT v4.3 Bluetooth speaker that also takes phone calls, with a Wi-Fi control page and OTA.
 // Boot order matters: radio first (RF calibration isolated from codec/I2S
 // activity, more initial heap), then codec + I2S, touch pads, Bluetooth profiles.
 #include <stdio.h>
@@ -16,6 +16,10 @@
 #include "bt_music.h"
 #include "bt_call.h"
 #include "touch_buttons.h"
+#include "wifi_link.h"
+#include "web_ui.h"
+#include "esp_ota_ops.h"
+#include "esp_timer.h"
 
 // Touch pads: a call always wins over music.
 void app_key(app_key_t key)
@@ -39,13 +43,17 @@ void app_key(app_key_t key)
         if (audio_engine_call_active()) bt_call_volume_step(key == KEY_VOL_UP ? 1 : -1);
         else bt_music_key(key);
         break;
+    case KEY_WIFI_SETUP:
+        wifi_link_start_setup();
+        break;
     }
 }
 
 static void console_task(void *arg)
 {
     ESP_LOGI("console", "Keys: a answer, h hangup/reject, m redial, c connect bonded phone, x disconnect, v list bonds, f forget bonds, "
-                        "i status, t ring tone test, l/r/z/b tones, ]/[ DAC +-1.5 dB, 0 reset DAC + self-test, k power self-test");
+                        "i status, t ring tone test, l/r/z/b tones, ]/[ DAC +-1.5 dB, 0 reset DAC + self-test, k power self-test, "
+                        "w Wi-Fi status, W Wi-Fi setup hotspot, n forget Wi-Fi network");
     bool ring_test = false;
     while (1) {
         int c = getchar();
@@ -57,7 +65,7 @@ static void console_task(void *arg)
         case 'x': bt_core_disconnect(); break;
         case 'v': bt_core_list_bonds(); break;
         case 'f': bt_core_forget_all(); break;
-        case 'i': bt_core_log_status(); bt_call_log_status(); audio_engine_log_status(); break;
+        case 'i': bt_core_log_status(); bt_call_log_status(); audio_engine_log_status(); wifi_link_log_status(); break;
         case 't': ring_test = !ring_test; audio_engine_ring(ring_test); break;
         case 'l': audio_engine_test_mode(1); break;
         case 'r': audio_engine_test_mode(2); break;
@@ -67,10 +75,30 @@ static void console_task(void *arg)
         case '[': audio_engine_dac_step(-1); break;
         case '0': audio_engine_dac_reset(); break;
         case 'k': audio_engine_calibrate(); break;
+        case 'w': wifi_link_log_status(); break;
+        case 'W': wifi_link_start_setup(); break;
+        case 'n': wifi_link_forget(); break;
         case EOF: clearerr(stdin); break;
         default: break;
         }
         vTaskDelay(pdMS_TO_TICKS(20));
+    }
+}
+
+// OTA rollback: an image that was just installed boots as "pending verify".
+// It confirms itself only once the Bluetooth stack is up and OTA_VALID_AFTER_S
+// have passed without a reset; otherwise the next reset boots the old image.
+static void ota_confirm_cb(void *arg)
+{
+    const esp_partition_t *run = esp_ota_get_running_partition();
+    esp_ota_img_states_t state;
+    if (esp_ota_get_state_partition(run, &state) == ESP_OK && state == ESP_OTA_IMG_PENDING_VERIFY) {
+        if (bt_core_ready()) {
+            esp_ota_mark_app_valid_cancel_rollback();
+            ESP_LOGI("boot", "New firmware in %s confirmed (Bluetooth ready); rollback cancelled", run->label);
+        } else {
+            ESP_LOGW("boot", "New firmware in %s not confirmed: Bluetooth not ready. Reset will roll back", run->label);
+        }
     }
 }
 
@@ -95,6 +123,13 @@ void app_main(void)
     ESP_ERROR_CHECK(audio_engine_init());
     ESP_ERROR_CHECK(touch_buttons_init());
     ESP_ERROR_CHECK(bt_core_start());
-    xTaskCreate(console_task, "console", 3072, NULL, 2, NULL);
-    ESP_LOGI("boot", "Initialized; free heap=%lu bytes", (unsigned long)esp_get_free_heap_size());
+    ESP_ERROR_CHECK(wifi_link_init()); // after Bluetooth: coexistence takes the radio in turns
+    ESP_ERROR_CHECK(web_ui_start());
+    esp_timer_handle_t confirm;
+    esp_timer_create_args_t args = {.callback = ota_confirm_cb, .name = "ota_confirm"};
+    ESP_ERROR_CHECK(esp_timer_create(&args, &confirm));
+    ESP_ERROR_CHECK(esp_timer_start_once(confirm, OTA_VALID_AFTER_S * 1000000ULL));
+    xTaskCreate(console_task, "console", 3584, NULL, 2, NULL);
+    const esp_partition_t *run = esp_ota_get_running_partition();
+    ESP_LOGI("boot", "Initialized; running from %s; free heap=%lu bytes", run ? run->label : "?", (unsigned long)esp_get_free_heap_size());
 }

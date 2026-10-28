@@ -32,3 +32,4 @@ void audio_engine_dac_step(int delta);      // ] / [ : 1.5 dB codec steps, not p
 void audio_engine_dac_reset(void);      // 0 : default profile, forget the learned limit, run the power self-test again
 void audio_engine_calibrate(void);      // k : run the power self-test now
 void audio_engine_log_status(void);
+unsigned audio_engine_dac_profile(void);   // current ES8388 DAC profile index (web page)

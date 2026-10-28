@@ -11,9 +11,16 @@ Bluetooth name: `wifi blu` (`main/board_config.h`). CMake project name: `wifiblu
 - `docs/lyrat-v4.3-hardware.md`, `docs/hardware/` (official schematic, layout, BOM), `docs/references/` (ES8388 reference driver).
 - `sdkconfig.defaults`: same as bleaudiocall plus `CONFIG_ESP_COEX_SW_COEXIST_ENABLE=y` (Wi-Fi and Classic Bluetooth share the one radio).
 
-## Wi-Fi plan (to be decided)
+## Wi-Fi (Phase 1, built 2026-10-28, not yet tested on the board)
 
-Open questions before writing code: what Wi-Fi is for (phone app / web page for settings, OTA firmware update, internet radio, multi-room), station or access point, how credentials get in (SmartConfig, captive portal, serial). Constraint to remember: on the ESP32 the radio is shared; Wi-Fi traffic during A2DP streaming causes audio drop-outs unless Wi-Fi is kept idle while music plays.
+Research and the reasons for this scope: `docs/00-wifi-options.md`. Design, behaviour and the test list: `docs/01-wifi-phase1.md`. General ideas (market, audio projects) live in `../ideas-esp/`.
+
+- **Setup**: with no network saved (or SET held 6 s, or console `W`) the speaker opens the hotspot `wifi blu setup`; the phone that joins it gets the setup page by itself (captive portal). Pick the home network, type the password, done. Station mode afterwards, hotspot closed.
+- **Control page**: `http://wifiblu.local/` (mDNS) on the home network: Bluetooth / call / Wi-Fi status, play, next, volume, answer, hang up, connect, disconnect, self-test, forget phones, forget Wi-Fi, reboot, free memory, uptime.
+- **Firmware update**: upload `build/wifiblu.bin` from the page. Two OTA slots (`partitions.csv`), rollback if the new image does not come up.
+- Radio rule: Wi-Fi station + Bluetooth is the stable mix; the hotspot runs only during setup; uploads share the radio with music (pause first).
+
+Console keys added: `w` Wi-Fi status, `W` setup hotspot, `n` forget network.
 
 ## Build / flash / monitor
 
@@ -23,4 +30,5 @@ Same as bleaudiocall: open this folder in VS Code (terminal profile activates ES
 
 | Date | Change | Result |
 |---|---|---|
-| 2026-10-27 | Project created from bleaudiocall v1.0.1; name `wifi blu`; coexistence enabled in config; no Wi-Fi code yet | not built yet |
+| 2026-10-27 | Project created from bleaudiocall v1.0.1; name `wifi blu`; coexistence enabled in config; no Wi-Fi code yet | builds, 824 KB |
+| 2026-10-28 | Wi-Fi Phase 1: setup hotspot + captive portal, `wifiblu.local` control page (esp_http_server + mDNS), OTA upload with rollback, OTA partition table, SET 6 s hold, console keys | builds, 1.49 MB (53% of the 3 MB slot free); board not connected, untested (test list in docs/01) |

@@ -50,3 +50,22 @@ CONFIG_COMPILER_OPTIMIZATION_PERF=y
 
 # AVRCP cover art (BIP over OBEX) is never used by a speaker: saves RAM/flash.
 CONFIG_BT_AVRCP_CT_COVER_ART_ENABLED=n
+
+# ---- Wi-Fi (Phase 1: setup portal, wifiblu.local control page, OTA) ----
+# Two OTA slots (partitions.csv). A freshly updated image must prove itself
+# (esp_ota_mark_app_valid_cancel_rollback in main.c once Bluetooth is ready);
+# otherwise the bootloader returns to the previous image on the next reset.
+CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y
+# Captive portal: phones open several connections while probing; mDNS and the
+# DNS redirector need sockets too.
+CONFIG_LWIP_MAX_SOCKETS=16
+CONFIG_HTTPD_MAX_REQ_HDR_LEN=1024
+CONFIG_HTTPD_MAX_URI_LEN=512
+# Wi-Fi RAM: smaller buffers than the default, the Bluetooth stack already
+# holds a lot of the internal heap. 6/8 buffers are enough for a settings page
+# and a firmware upload; music streaming never runs over Wi-Fi in Phase 1.
+CONFIG_ESP_WIFI_STATIC_RX_BUFFER_NUM=6
+CONFIG_ESP_WIFI_DYNAMIC_RX_BUFFER_NUM=8
+CONFIG_ESP_WIFI_DYNAMIC_TX_BUFFER_NUM=8
+CONFIG_ESP_WIFI_AMPDU_TX_ENABLED=n
+CONFIG_ESP_WIFI_AMPDU_RX_ENABLED=n

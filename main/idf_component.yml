@@ -1,0 +1,5 @@
+## wifiblu: components from the Espressif registry (fetched at build time).
+dependencies:
+  idf: ">=5.0"
+  # wifiblu.local name on the home network (mDNS moved out of ESP-IDF core).
+  espressif/mdns: "^1.2.0"
