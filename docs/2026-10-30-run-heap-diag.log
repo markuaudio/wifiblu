@@ -1,0 +1,1273 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 28 2026 04:49:12
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) boot: No factory image, trying OTA 0
+I (95) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ea00h (256512) map
+I (194) esp_image: segment 1: paddr=0005ea28 vaddr=3ffbdb60 size=015f0h (  5616) load
+I (197) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=10aa8ch (1092236) map
+I (587) esp_image: segment 3: paddr=0016aab4 vaddr=3ffbf150 size=04a98h ( 19096) load
+I (595) esp_image: segment 4: paddr=0016f554 vaddr=40080000 size=1c450h (115792) load
+I (643) esp_image: segment 5: paddr=0018b9ac vaddr=50000000 size=00028h (    40) load
+I (657) boot: Loaded app from partition at offset 0x20000
+I (658) boot: Set actual ota_seq=1 in otadata[0]
+I (658) boot: Disabling RNG early entropy source...
+I (672) cpu_start: Multicore app
+I (681) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (681) cpu_start: Pro cpu start user code
+I (681) cpu_start: cpu freq: 240000000 Hz
+I (683) app_init: Application information:
+I (687) app_init: Project name:     wifiblu
+I (691) app_init: App version:      0.1.0
+I (694) app_init: Compile time:     Oct 30 2026 15:49:09
+I (699) app_init: ELF file SHA256:  167670972...
+I (704) app_init: ESP-IDF:          v6.1
+I (707) efuse_init: Min chip rev:     v0.0
+I (711) efuse_init: Max chip rev:     v3.99 
+I (715) efuse_init: Chip rev:         v3.0
+I (719) heap_init: Initializing. RAM available for dynamic allocation:
+I (725) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (730) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (735) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (741) heap_init: At 3FFD2CC0 len 0000D340 (52 KiB): DRAM
+I (746) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (751) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (757) heap_init: At 4009C450 len 00003BB0 (14 KiB): IRAM
+W (763) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (775) spi_flash: detected chip: generic
+I (779) spi_flash: flash io: dio
+I (783) coexist: coex firmware version: a830d28
+I (787) main_task: Started on CPU0
+I (787) main_task: Calling app_main()
+I (787) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (807) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (807) BTDM_INIT: BT controller compile version [4a0f94d]
+I (807) BTDM_INIT: Using main XTAL as clock source
+I (817) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (817) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+I (1277) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+I (1287) audio: DAC profile P0 (-12.0 dB): limit found by the power self-test for this supply
+W (1287) gpio: conflict found for GPIO[21]
+I (1407) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (1407) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (1407) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1417) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (1427) audio: Engine: music 1x gain + limiter, DAC P0, call volume 10/15, mic gain 2.0x
+I (1437) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (1447) es8388: ADC/microphones OFF
+I (1447) touch: Calibration: do not touch pads for 1 second
+I (1447) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1457) audio: Path: MUSIC at 4100 Hz
+I (2387) touch: PLAY GPIO33 baseline=1278
+I (2387) touch: SET GPIO32 baseline=1278
+I (2387) touch: VOL+ GPIO27 baseline=1158
+I (2387) touch: VOL- GPIO13 baseline=840
+I (2387) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold 6 s: Wi-Fi setup), VOL +/-
+W (2417) BT_BTC: A2DP Enable with AVRC
+I (2457) bt: READY: music (A2DP) + calls (HFP). Select 'wifi blu' in the phone's Bluetooth list
+I (2457) bt: 2 bonded phone(s); will try 2c:d0:66:b0:8c:74 (last connected) in 3 s, then the others in turn
+I (2477) wifi:wifi driver task: 3fff7680, prio:23, stack:6656, core=0
+I (2477) wifi:wifi firmware version: e12a754
+I (2477) wifi:wifi certification version: v7.0
+I (2477) wifi:config NVS flash: enabled
+I (2477) wifi:config nano formatting: disabled
+I (2487) wifi:Init data frame dynamic rx buffer num: 8
+I (2487) wifi:Init static rx mgmt buffer num: 5
+I (2497) wifi:Init management short buffer num: 32
+I (2497) wifi:Init dynamic tx buffer num: 8
+I (2507) wifi:Init static rx buffer size: 1600
+I (2507) wifi:Init static rx buffer num: 6
+I (2507) wifi:Init dynamic rx buffer num: 8
+I (2517) wifi_init: accept mbox: 6
+I (2517) wifi_init: tcpip mbox: 32
+I (2517) wifi_init: udp mbox: 6
+I (2527) wifi_init: tcp mbox: 6
+I (2527) wifi_init: tcp tx win: 5760
+I (2527) wifi_init: tcp rx win: 5760
+I (2537) wifi_init: tcp mss: 1440
+I (2537) wifi_init: WiFi IRAM OP enabled
+I (2537) wifi_init: WiFi RX IRAM OP enabled
+I (2547) wifi:Set ps type: 1, coexist: 0
+
+I (2557) wifi:mode : sta (08:3a:f2:31:29:3c)
+I (2557) wifi:enable tsf
+I (2557) wifi: No network saved: opening the setup hotspot
+I (2557) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (2567) wifi:Total power save buffer number: 4
+I (2567) wifi:Init max length of beacon: 752/752
+I (2577) wifi:Init max length of beacon: 752/752
+I (2577) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2587) wifi:Total power save buffer number: 4
+I (2597) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2607) example_dns_redirect_server: Socket created
+I (2607) example_dns_redirect_server: Socket bound, port 53
+I (2607) example_dns_redirect_server: Waiting for data
+I (2617) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (2627) boot: Heap before web server: free=4568 bytes, largest block=4352 bytes
+E (2637) web: HTTP server: ESP_ERR_HTTPD_TASK
+E (2637) boot: Control page not started; Bluetooth audio continues
+I (2647) boot: Initialized; running from ota_0; free heap=4428 bytes
+I (2647) main_task: Returned from app_main()
+W (2697) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 1). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (3107) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 2). DAC profile stays at P0 (-12.0 ). No reset, phone stays connected; audio resumes in 400 ms
+I (3467) bt: Radio: connectable, DISCOVERABLE (visible in the phone's list)
+W (3517) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 3). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (3927) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 4). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (4337) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 5). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (4747) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 6). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (5157) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 7). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (5467) bt: Reconnect attempt 1 to last connected phone 2c:d0:66:b0:8c:74 (next in 10 s)
+I (5467) bt: Opening music (A2DP) to 2c:d0:66:b0:8c:74 ourselves
+W (5467) BT_APPL: reset flags
+I (5477) music: A2DP connecting...
+W (5567) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 8). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (5977) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 9). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (6387) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 10). DAC profile stays at P0 (-12.0dB). No reset, phone stays connected; audio resumes in 400 ms
+I (6437) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (6437) audio: music buffer=0 B drops=0 underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (6447) audio: brownout guard events since boot: 10
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 28 2026 04:49:12
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ea00h (256512) map
+I (190) esp_image: segment 1: paddr=0005ea28 vaddr=3ffbdb60 size=015f0h (  5616) load
+I (193) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=10aa8ch (1092236) map
+I (584) esp_image: segment 3: paddr=0016aab4 vaddr=3ffbf150 size=04a98h ( 19096) load
+I (591) esp_image: segment 4: paddr=0016f554 vaddr=40080000 size=1c450h (115792) load
+I (639) esp_image: segment 5: paddr=0018b9ac vaddr=50000000 size=00028h (    40) load
+I (653) boot: Loaded app from partition at offset 0x20000
+I (654) boot: Disabling RNG early entropy source...
+I (664) cpu_start: Multicore app
+I (672) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (673) cpu_start: Pro cpu start user code
+I (673) cpu_start: cpu freq: 240000000 Hz
+I (675) app_init: Application information:
+I (678) app_init: Project name:     wifiblu
+I (682) app_init: App version:      0.1.0
+I (686) app_init: Compile time:     Oct 30 2026 15:49:09
+I (691) app_init: ELF file SHA256:  167670972...
+I (695) app_init: ESP-IDF:          v6.1
+I (699) efuse_init: Min chip rev:     v0.0
+I (703) efuse_init: Max chip rev:     v3.99 
+I (707) efuse_init: Chip rev:         v3.0
+I (711) heap_init: Initializing. RAM available for dynamic allocation:
+I (717) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (722) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (727) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (732) heap_init: At 3FFD2CC0 len 0000D340 (52 KiB): DRAM
+I (738) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (743) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (748) heap_init: At 4009C450 len 00003BB0 (14 KiB): IRAM
+W (755) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (767) spi_flash: detected chip: generic
+I (770) spi_flash: flash io: dio
+I (775) coexist: coex firmware version: a830d28
+I (778) main_task: Started on CPU0
+I (778) main_task: Calling app_main()
+I (778) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (798) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (798) BTDM_INIT: BT controller compile version [4a0f94d]
+I (798) BTDM_INIT: Using main XTAL as clock source
+I (808) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (818) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+I (1288) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+I (1288) audio: DAC profile P0 (-12.0 dB): limit found by the power self-test for this supply
+W (1288) gpio: conflict found for GPIO[21]
+I (1408) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (1408) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (1408) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1418) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (1428) audio: Engine: music 1x gain + limiter, DAC P0, call volume 10/15, mic gain 2.0x
+I (1438) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (1448) es8388: ADC/microphones OFF
+I (1448) touch: Calibration: do not touch pads for 1 second
+I (1448) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1458) audio: Path: MUSIC at 44100 Hz
+I (2388) touch: PLAY GPIO33 baseline=1278
+I (2388) touch: SET GPIO32 baseline=1278
+I (2388) touch: VOL+ GPIO27 baseline=1157
+I (2388) touch: VOL- GPIO13 baseline=840
+I (2388) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold 6 s: Wi-Fi setup), VOL +/-
+W (2418) BT_BTC: A2DP Enable with AVRC
+I (2458) bt: READY: music (A2DP) + calls (HFP). Select 'wifi blu' in the phone's Bluetooth list
+I (2458) bt: 2 bonded phone(s); will try 2c:d0:66:b0:8c:74 (last connected) in 3 s, then the others in turn
+I (2478) wifi:wifi driver task: 3fff7694, prio:23, stack:6656, core=0
+I (2478) wifi:wifi firmware version: e12a754
+I (2478) wifi:wifi certification version: v7.0
+I (2478) wifi:config NVS flash: enabled
+I (2478) wifi:config nano formatting: disabled
+I (2488) wifi:Init data frame dynamic rx buffer num: 8
+I (2488) wifi:Init static rx mgmt buffer num: 5
+I (2498) wifi:Init management short buffer num: 32
+I (2498) wifi:Init dynamic tx buffer num: 8
+I (2508) wifi:Init static rx buffer size: 1600
+I (2508) wifi:Init static rx buffer num: 6
+I (2508) wifi:Init dynamic rx buffer num: 8
+I (2518) wifi_init: accept mbox: 6
+I (2518) wifi_init: tcpip mbox: 32
+I (2518) wifi_init: udp mbox: 6
+I (2528) wifi_init: tcp mbox: 6
+I (2528) wifi_init: tcp tx win: 5760
+I (2528) wifi_init: tcp rx win: 5760
+I (2538) wifi_init: tcp mss: 1440
+I (2538) wifi_init: WiFi IRAM OP enabled
+I (2538) wifi_init: WiFi RX IRAM OP enabled
+I (2548) wifi:Set ps type: 1, coexist: 0
+
+I (2558) wifi:mode : sta (08:3a:f2:31:29:3c)
+I (2558) wifi:enable tsf
+I (2558) wifi: No network saved: opening the setup hotspot
+I (2558) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (2568) wifi:Total power save buffer number: 4
+I (2568) wifi:Init max length of beacon: 752/752
+I (2578) wifi:Init max length of beacon: 752/752
+I (2578) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2588) wifi:Total power save buffer number: 4
+I (2588) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2598) example_dns_redirect_server: Socket created
+I (2608) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (2608) example_dns_redirect_server: Socket bound, port 53
+I (2618) example_dns_redirect_server: Waiting for data
+I (2628) boot: Heap before web server: free=4548 bytes, largest block=4352 bytes
+E (2638) web: HTTP server: ESP_ERR_HTTPD_TASK
+E (2638) boot: Control page not started; Bluetooth audio continues
+I (2648) boot: Initialized; running from ota_0; free heap=4408 bytes
+I (2648) main_task: Returned from app_main()
+W (2698) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 1). DAC profile stays at P0 (-12.0 ). No reset, phone stays connected; audio resumes in 400 ms
+W (3108) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 2). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 28 2026 04:49:12
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ea00h (256512) map
+I (190) esp_image: segment 1: paddr=0005ea28 vaddr=3ffbdb60 size=015f0h (  5616) load
+I (193) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=10aa8ch (1092236) map
+I (584) esp_image: segment 3: paddr=0016aab4 vaddr=3ffbf150 size=04a98h ( 19096) load
+I (591) esp_image: segment 4: paddr=0016f554 vaddr=40080000 size=1c450h (115792) load
+I (639) esp_image: segment 5: paddr=0018b9ac vaddr=50000000 size=00028h (    40) load
+I (653) boot: Loaded app from partition at offset 0x20000
+I (654) boot: Disabling RNG early entropy source...
+I (664) cpu_start: Multicore app
+I (672) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (673) cpu_start: Pro cpu start user code
+I (673) cpu_start: cpu freq: 240000000 Hz
+I (675) app_init: Application information:
+I (678) app_init: Project name:     wifiblu
+I (682) app_init: App version:      0.1.0
+I (686) app_init: Compile time:     Oct 30 2026 15:49:09
+I (691) app_init: ELF file SHA256:  167670972...
+I (695) app_init: ESP-IDF:          v6.1
+I (699) efuse_init: Min chip rev:     v0.0
+I (703) efuse_init: Max chip rev:     v3.99 
+I (707) efuse_init: Chip rev:         v3.0
+I (711) heap_init: Initializing. RAM available for dynamic allocation:
+I (717) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (722) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (727) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (732) heap_init: At 3FFD2CC0 len 0000D340 (52 KiB): DRAM
+I (738) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (743) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (748) heap_init: At 4009C450 len 00003BB0 (14 KiB): IRAM
+W (755) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (767) spi_flash: detected chip: generic
+I (770) spi_flash: flash io: dio
+I (775) coexist: coex firmware version: a830d28
+I (778) main_task: Started on CPU0
+I (778) main_task: Calling app_main()
+I (778) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (798) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (798) BTDM_INIT: BT controller compile version [4a0f94d]
+I (798) BTDM_INIT: Using main XTAL as clock source
+I (808) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (808) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+I (1268) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+I (1278) audio: DAC profile P0 (-12.0 dB): limit found by the power self-test for this supply
+W (1278) gpio: conflict found for GPIO[21]
+I (1388) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (1388) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (1388) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1398) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (1408) audio: Engine: music 1x gain + limiter, DAC P0, call volume 10/15, mic gain 2.0x
+I (1418) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (1428) es8388: ADC/microphones OFF
+I (1428) touch: Calibration: do not touch pads for 1 second
+I (1428) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1438) audio: Path: MUSIC at 44100 Hz
+I (2368) touch: PLAY GPIO33 baseline=1278
+I (2368) touch: SET GPIO32 baseline=1278
+I (2368) touch: VOL+ GPIO27 baseline=1157
+I (2368) touch: VOL- GPIO13 baseline=840
+I (2368) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold 6 s: Wi-Fi setup), VOL +/-
+W (2398) BT_BTC: A2DP Enable with AVRC
+I (2438) bt: READY: music (A2DP) + calls (HFP). Select 'wifi blu' in the phone's Bluetooth list
+I (2438) bt: 2 bonded phone(s); will try 2c:d0:66:b0:8c:74 (last connected) in 3 s, then the others in turn
+I (2458) wifi:wifi driver task: 3fff768c, prio:23, stack:6656, core=0
+I (2458) wifi:wifi firmware version: e12a754
+I (2458) wifi:wifi certification version: v7.0
+I (2458) wifi:config NVS flash: enabled
+I (2458) wifi:config nano formatting: disabled
+I (2468) wifi:Init data frame dynamic rx buffer num: 8
+I (2468) wifi:Init static rx mgmt buffer num: 5
+I (2478) wifi:Init management short buffer num: 32
+I (2478) wifi:Init dynamic tx buffer num: 8
+I (2478) wifi:Init static rx buffer size: 1600
+I (2488) wifi:Init static rx buffer num: 6
+I (2488) wifi:Init dynamic rx buffer num: 8
+I (2498) wifi_init: accept mbox: 6
+I (2498) wifi_init: tcpip mbox: 32
+I (2498) wifi_init: udp mbox: 6
+I (2508) wifi_init: tcp mbox: 6
+I (2508) wifi_init: tcp tx win: 5760
+I (2508) wifi_init: tcp rx win: 5760
+I (2508) wifi_init: tcp mss: 1440
+I (2518) wifi_init: WiFi IRAM OP enabled
+I (2518) wifi_init: WiFi RX IRAM OP enabled
+I (2528) wifi:Set ps type: 1, coexist: 0
+
+I (2538) wifi:mode : sta (08:3a:f2:31:29:3c)
+I (2538) wifi:enable tsf
+I (2538) wifi: No network saved: opening the setup hotspot
+I (2548) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (2548) wifi:Total power save buffer number: 4
+I (2548) wifi:Init max length of beacon: 752/752
+I (2558) wifi:Init max length of beacon: 752/752
+I (2558) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2568) wifi:Total power save buffer number: 4
+I (2568) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2578) example_dns_redirect_server: Socket created
+I (2588) example_dns_redirect_server: Socket bound, port 53
+I (2588) example_dns_redirect_server: Waiting for data
+I (2598) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (2608) boot: Heap before web server: free=4556 bytes, largest block=4352 bytes
+E (2618) web: HTTP server: ESP_ERR_HTTPD_TASK
+E (2618) boot: Control page not started; Bluetooth audio continues
+I (2628) boot: Initialized; running from ota_0; free heap=4416 bytes
+I (2628) main_task: Returned from app_main()
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 28 2026 04:49:12
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ea00h (256512) map
+I (190) esp_image: segment 1: paddr=0005ea28 vaddr=3ffbdb60 size=015f0h (  5616) load
+I (193) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=10aa8ch (1092236) map
+I (584) esp_image: segment 3: paddr=0016aab4 vaddr=3ffbf150 size=04a98h ( 19096) load
+I (591) esp_image: segment 4: paddr=0016f554 vaddr=40080000 size=1c450h (115792) load
+I (639) esp_image: segment 5: paddr=0018b9ac vaddr=50000000 size=00028h (    40) load
+I (653) boot: Loaded app from partition at offset 0x20000
+I (654) boot: Disabling RNG early entropy source...
+I (664) cpu_start: Multicore app
+I (672) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (673) cpu_start: Pro cpu start user code
+I (673) cpu_start: cpu freq: 240000000 Hz
+I (675) app_init: Application information:
+I (678) app_init: Project name:     wifiblu
+I (682) app_init: App version:      0.1.0
+I (686) app_init: Compile time:     Oct 30 2026 15:49:09
+I (691) app_init: ELF file SHA256:  167670972...
+I (695) app_init: ESP-IDF:          v6.1
+I (699) efuse_init: Min chip rev:     v0.0
+I (703) efuse_init: Max chip rev:     v3.99 
+I (707) efuse_init: Chip rev:         v3.0
+I (711) heap_init: Initializing. RAM available for dynamic allocation:
+I (717) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (722) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (727) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (732) heap_init: At 3FFD2CC0 len 0000D340 (52 KiB): DRAM
+I (738) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (743) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (748) heap_init: At 4009C450 len 00003BB0 (14 KiB): IRAM
+W (755) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (767) spi_flash: detected chip: generic
+I (770) spi_flash: flash io: dio
+I (775) coexist: coex firmware version: a830d28
+I (778) main_task: Started on CPU0
+I (778) main_task: Calling app_main()
+I (778) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (798) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (798) BTDM_INIT: BT controller compile version [4a0f94d]
+I (798) BTDM_INIT: Using main XTAL as clock source
+I (808) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (808) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+I (1278) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+I (1288) audio: DAC profile P0 (-12.0 dB): limit found by the power self-test for this supply
+W (1288) gpio: conflict found for GPIO[21]
+I (1408) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (1408) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (1408) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1418) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (1428) audio: Engine: music 1x gain + limiter, DAC P0, call volume 10/15, mic gain 2.0x
+I (1438) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (1448) es8388: ADC/microphones OFF
+I (1448) touch: Calibration: do not touch pads for 1 second
+I (1448) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1458) audio: Path: MUSIC at 44100 Hz
+I (2388) touch: PLAY GPIO33 baseline=1279
+I (2388) touch: SET GPIO32 baseline=1279
+I (2388) touch: VOL+ GPIO27 baseline=1157
+I (2388) touch: VOL- GPIO13 baseline=840
+I (2388) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold 6 s: Wi-Fi setup), VOL +/-
+W (2418) BT_BTC: A2DP Enable with AVRC
+I (2458) bt: READY: music (A2DP) + calls (HFP). Select 'wifi blu' in the phone's Bluetooth list
+I (2458) bt: 2 bonded phone(s); will try 2c:d0:66:b0:8c:74 (last connected) in 3 s, then the others in turn
+I (2478) wifi:wifi driver task: 3fff76a8, prio:23, stack:6656, core=0
+I (2478) wifi:wifi firmware version: e12a754
+I (2478) wifi:wifi certification version: v7.0
+I (2478) wifi:config NVS flash: enabled
+I (2488) wifi:config nano formatting: disabled
+I (2488) wifi:Init data frame dynamic rx buffer num: 8
+I (2498) wifi:Init static rx mgmt buffer num: 5
+I (2498) wifi:Init management short buffer num: 32
+I (2498) wifi:Init dynamic tx buffer num: 8
+I (2508) wifi:Init static rx buffer size: 1600
+I (2508) wifi:Init static rx buffer num: 6
+I (2518) wifi:Init dynamic rx buffer num: 8
+I (2528) wifi_init: accept mbox: 6
+I (2528) wifi_init: tcpip mbox: 32
+I (2528) wifi_init: udp mbox: 6
+I (2528) wifi_init: tcp mbox: 6
+I (2538) wifi_init: tcp tx win: 5760
+I (2538) wifi_init: tcp rx win: 5760
+I (2538) wifi_init: tcp mss: 1440
+I (2548) wifi_init: WiFi IRAM OP enabled
+I (2548) wifi_init: WiFi RX IRAM OP enabled
+I (2548) wifi:Set ps type: 1, coexist: 0
+
+I (2558) wifi:mode : sta (08:3a:f2:31:29:3c)
+I (2558) wifi:enable tsf
+I (2568) wifi: No network saved: opening the setup hotspot
+I (2568) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (2568) wifi:Total power save buffer number: 4
+I (2578) wifi:Init max length of beacon: 752/752
+I (2578) wifi:Init max length of beacon: 752/752
+I (2588) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2588) wifi:Total power save buffer number: 4
+I (2598) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2608) example_dns_redirect_server: Socket created
+I (2608) example_dns_redirect_server: Socket bound, port 53
+I (2608) example_dns_redirect_server: Waiting for data
+I (2618) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (2638) boot: Heap before web server: free=4528 bytes, largest block=4352 bytes
+E (2638) web: HTTP server: ESP_ERR_HTTPD_TASK
+E (2638) boot: Control page not started; Bluetooth audio continues
+I (2648) boot: Initialized; running from ota_0; free heap=4388 bytes
+I (2658) main_task: Returned from app_main()
+W (2698) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 1). DAC profile stays at P0 (-12.0 B). No reset, phone stays connected; audio resumes in 400 ms
+W (3118) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 2). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (3468) bt: Radio: connectable, DISCOVERABLE (visible in the phone's list)
+W (3518) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 3). DAC profile stays at P0 (-12.0 ). No reset, phone stays connected; audio resumes in 400 ms
+W (3928) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 4). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (4348) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 5). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (4748) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 6). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (5158) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 7). DAC profile stays at P0 (-12.0 ). No reset, phone stays connected; audio resumes in 400 ms
+I (5468) bt: Reconnect attempt 1 to last connected phone 2c:d0:66:b0:8c:74 (next in 10 s)
+I (5468) bt: Opening music (A2DP) to 2c:d0:66:b0:8c:74 ourselves
+W (5468) BT_APPL: reset flags
+I (5478) music: A2DP connecting...
+W (5568) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 8). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (5978) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 9). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (6388) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 10). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (6438) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (6438) audio: music buffer=0 B drops=0 underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (6448) audio: brownout guard events since boot: 10
+W (6798) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 11). DAC profile stays at P0 (-12.0B). No reset, phone stays connected; audio resumes in 400 ms
+W (7208) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 12). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (7618) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 13). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (7648) BT_HCI: hcif conn complete: hdl 0x81, st 0x0
+I (7658) bt: Radio link with 2c:d0:66:b0:8c:74: status 0x0
+E (7768) BT_OSI: malloc failed (caller=0x401225b5 size=4112)
+E (7768) BT_OSI: heap info: free=4912, largest_block=2560
+W (7778) BT_BTC: BTA_AV_OPEN_EVT::FAILED status: 2
+
+I (7778) bt: Music (A2DP) attempt failed (phone reachable); trying the other profile
+W (8028) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 14). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (8438) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 15). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (8468) bt: Opening calls (HFP) to 2c:d0:66:b0:8c:74 ourselves
+E (8468) BT_OSI: malloc failed (caller=0x400e71a4 size=4112)
+E (8468) BT_OSI: heap info: free=7928, largest_block=2560
+I (8478) call: Link state 0 (3 = ready for calls), phone features 0x0
+W (8478) call: HFP link attempt ended before service level connection (phone off, out of range, or no hands-free support)
+I (8488) bt: Calls (HFP) attempt failed (phone reachable)
+W (8858) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 16). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (9368) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 17). DAC profile stays at P0 (-12.0B). No reset, phone stays connected; audio resumes in 400 ms
+W (9868) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 18). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (10278) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 19). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (10688) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 20). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (11098) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 21). DAC profile stays at P0 (-12.0dB). No reset, phone stays connected; audio resumes in 400 ms
+I (11458) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (11458) audio: music buffer=0 B drops=0 underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (11458) audio: brownout guard events since boot: 21
+W (11508) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 22). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (11788) BT_HCI: hci cmd send: disconnect: hdl 0x81, rsn:0x13
+W (11848) BT_HCI: hcif disc complete: hdl 0x81, rsn 0x16 dev_find 1
+I (11848) bt: Radio link closed by 2c:d0:66:b0:8c:74: reason 0x116 (0x13 phone, 0x16 us, 0x08 timeout/out of range)
+W (11918) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 23). DAC profile stays at P0 (-12.0B). No reset, phone stays connected; audio resumes in 400 ms
+W (12328) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 24). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 28 2026 04:49:12
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ea00h (256512) map
+I (190) esp_image: segment 1: paddr=0005ea28 vaddr=3ffbdb60 size=015f0h (  5616) load
+I (193) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=10aa8ch (1092236) map
+I (584) esp_image: segment 3: paddr=0016aab4 vaddr=3ffbf150 size=04a98h ( 19096) load
+I (591) esp_image: segment 4: paddr=0016f554 vaddr=40080000 size=1c450h (115792) load
+I (639) esp_image: segment 5: paddr=0018b9ac vaddr=50000000 size=00028h (    40) load
+I (653) boot: Loaded app from partition at offset 0x20000
+I (654) boot: Disabling RNG early entropy source...
+I (664) cpu_start: Multicore app
+I (672) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (673) cpu_start: Pro cpu start user code
+I (673) cpu_start: cpu freq: 240000000 Hz
+I (675) app_init: Application information:
+I (678) app_init: Project name:     wifiblu
+I (682) app_init: App version:      0.1.0
+I (686) app_init: Compile time:     Oct 30 2026 15:49:09
+I (691) app_init: ELF file SHA256:  167670972...
+I (695) app_init: ESP-IDF:          v6.1
+I (699) efuse_init: Min chip rev:     v0.0
+I (703) efuse_init: Max chip rev:     v3.99 
+I (707) efuse_init: Chip rev:         v3.0
+I (711) heap_init: Initializing. RAM available for dynamic allocation:
+I (717) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (722) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (727) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (732) heap_init: At 3FFD2CC0 len 0000D340 (52 KiB): DRAM
+I (738) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (743) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (748) heap_init: At 4009C450 len 00003BB0 (14 KiB): IRAM
+W (755) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (767) spi_flash: detected chip: generic
+I (770) spi_flash: flash io: dio
+I (775) coexist: coex firmware version: a830d28
+I (778) main_task: Started on CPU0
+I (778) main_task: Calling app_main()
+I (778) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (798) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (798) BTDM_INIT: BT controller compile version [4a0f94d]
+I (798) BTDM_INIT: Using main XTAL as clock source
+I (808) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (808) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 28 2026 04:49:12
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ea00h (256512) map
+I (190) esp_image: segment 1: paddr=0005ea28 vaddr=3ffbdb60 size=015f0h (  5616) load
+I (193) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=10aa8ch (1092236) map
+I (584) esp_image: segment 3: paddr=0016aab4 vaddr=3ffbf150 size=04a98h ( 19096) load
+I (591) esp_image: segment 4: paddr=0016f554 vaddr=40080000 size=1c450h (115792) load
+I (639) esp_image: segment 5: paddr=0018b9ac vaddr=50000000 size=00028h (    40) load
+I (653) boot: Loaded app from partition at offset 0x20000
+I (654) boot: Disabling RNG early entropy source...
+I (664) cpu_start: Multicore app
+I (672) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (673) cpu_start: Pro cpu start user code
+I (673) cpu_start: cpu freq: 240000000 Hz
+I (675) app_init: Application information:
+I (678) app_init: Project name:     wifiblu
+I (682) app_init: App version:      0.1.0
+I (686) app_init: Compile time:     Oct 30 2026 15:49:09
+I (691) app_init: ELF file SHA256:  167670972...
+I (695) app_init: ESP-IDF:          v6.1
+I (699) efuse_init: Min chip rev:     v0.0
+I (703) efuse_init: Max chip rev:     v3.99 
+I (707) efuse_init: Chip rev:         v3.0
+I (711) heap_init: Initializing. RAM available for dynamic allocation:
+I (717) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (722) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (727) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (732) heap_init: At 3FFD2CC0 len 0000D340 (52 KiB): DRAM
+I (738) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (743) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (748) heap_init: At 4009C450 len 00003BB0 (14 KiB): IRAM
+W (755) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (767) spi_flash: detected chip: generic
+I (770) spi_flash: flash io: dio
+I (775) coexist: coex firmware version: a830d28
+I (778) main_task: Started on CPU0
+I (778) main_task: Calling app_main()
+I (778) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (798) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (798) BTDM_INIT: BT controller compile version [4a0f94d]
+I (798) BTDM_INIT: Using main XTAL as clock source
+I (808) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (808) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+I (1268) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+I (1278) audio: DAC profile P0 (-12.0 dB): limit found by the power self-test for this supply
+W (1278) gpio: conflict found for GPIO[21]
+I (1388) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (1388) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (1388) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1398) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (1408) audio: Engine: music 1x gain + limiter, DAC P0, call volume 10/15, mic gain 2.0x
+I (1418) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (1428) es8388: ADC/microphones OFF
+I (1428) touch: Calibration: do not touch pads for 1 second
+I (1428) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1438) audio: Path: MUSIC at 44100 Hz
+I (2368) touch: PLAY GPIO33 baseline=1278
+I (2368) touch: SET GPIO32 baseline=1278
+I (2368) touch: VOL+ GPIO27 baseline=1156
+I (2368) touch: VOL- GPIO13 baseline=840
+I (2368) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold 6 s: Wi-Fi setup), VOL +/-
+W (2398) BT_BTC: A2DP Enable with AVRC
+I (2438) bt: READY: music (A2DP) + calls (HFP). Select 'wifi blu' in the phone's Bluetooth list
+I (2438) bt: 2 bonded phone(s); will try 2c:d0:66:b0:8c:74 (last connected) in 3 s, then the others in turn
+I (2458) wifi:wifi driver task: 3fff76ac, prio:23, stack:6656, core=0
+I (2458) wifi:wifi firmware version: e12a754
+I (2458) wifi:wifi certification version: v7.0
+I (2458) wifi:config NVS flash: enabled
+I (2458) wifi:config nano formatting: disabled
+I (2468) wifi:Init data frame dynamic rx buffer num: 8
+I (2468) wifi:Init static rx mgmt buffer num: 5
+I (2478) wifi:Init management short buffer num: 32
+I (2478) wifi:Init dynamic tx buffer num: 8
+I (2488) wifi:Init static rx buffer size: 1600
+I (2488) wifi:Init static rx buffer num: 6
+I (2488) wifi:Init dynamic rx buffer num: 8
+I (2498) wifi_init: accept mbox: 6
+I (2498) wifi_init: tcpip mbox: 32
+I (2498) wifi_init: udp mbox: 6
+I (2508) wifi_init: tcp mbox: 6
+I (2508) wifi_init: tcp tx win: 5760
+I (2508) wifi_init: tcp rx win: 5760
+I (2518) wifi_init: tcp mss: 1440
+I (2518) wifi_init: WiFi IRAM OP enabled
+I (2518) wifi_init: WiFi RX IRAM OP enabled
+I (2528) wifi:Set ps type: 1, coexist: 0
+
+I (2538) wifi:mode : sta (08:3a:f2:31:29:3c)
+I (2538) wifi:enable tsf
+I (2538) wifi: No network saved: opening the setup hotspot
+I (2538) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (2548) wifi:Total power save buffer number: 4
+I (2548) wifi:Init max length of beacon: 752/752
+I (2558) wifi:Init max length of beacon: 752/752
+I (2558) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2568) wifi:Total power save buffer number: 4
+I (2568) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2578) example_dns_redirect_server: Socket created
+I (2588) example_dns_redirect_server: Socket bound, port 53
+I (2588) example_dns_redirect_server: Waiting for data
+I (2598) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (2608) boot: Heap before web server: free=4524 bytes, largest block=4352 bytes
+E (2618) web: HTTP server: ESP_ERR_HTTPD_TASK
+E (2618) boot: Control page not started; Bluetooth audio continues
+I (2628) boot: Initialized; running from ota_0; free heap=4384 bytes
+I (2628) main_task: Returned from app_main()
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 28 2026 04:49:12
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ea00h (256512) map
+I (190) esp_image: segment 1: paddr=0005ea28 vaddr=3ffbdb60 size=015f0h (  5616) load
+I (193) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=10aa8ch (1092236) map
+I (584) esp_image: segment 3: paddr=0016aab4 vaddr=3ffbf150 size=04a98h ( 19096) load
+I (591) esp_image: segment 4: paddr=0016f554 vaddr=40080000 size=1c450h (115792) load
+I (639) esp_image: segment 5: paddr=0018b9ac vaddr=50000000 size=00028h (    40) load
+I (653) boot: Loaded app from partition at offset 0x20000
+I (654) boot: Disabling RNG early entropy source...
+I (664) cpu_start: Multicore app
+I (672) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (673) cpu_start: Pro cpu start user code
+I (673) cpu_start: cpu freq: 240000000 Hz
+I (675) app_init: Application information:
+I (678) app_init: Project name:     wifiblu
+I (682) app_init: App version:      0.1.0
+I (686) app_init: Compile time:     Oct 30 2026 15:49:09
+I (691) app_init: ELF file SHA256:  167670972...
+I (695) app_init: ESP-IDF:          v6.1
+I (699) efuse_init: Min chip rev:     v0.0
+I (703) efuse_init: Max chip rev:     v3.99 
+I (707) efuse_init: Chip rev:         v3.0
+I (711) heap_init: Initializing. RAM available for dynamic allocation:
+I (717) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (722) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (727) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (732) heap_init: At 3FFD2CC0 len 0000D340 (52 KiB): DRAM
+I (738) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (743) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (748) heap_init: At 4009C450 len 00003BB0 (14 KiB): IRAM
+W (755) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (767) spi_flash: detected chip: generic
+I (770) spi_flash: flash io: dio
+I (775) coexist: coex firmware version: a830d28
+I (778) main_task: Started on CPU0
+I (778) main_task: Calling app_main()
+I (778) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (798) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (798) BTDM_INIT: BT controller compile version [4a0f94d]
+I (798) BTDM_INIT: Using main XTAL as clock source
+I (808) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (808) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 28 2026 04:49:12
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ea00h (256512) map
+I (190) esp_image: segment 1: paddr=0005ea28 vaddr=3ffbdb60 size=015f0h (  5616) load
+I (193) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=10aa8ch (1092236) map
+I (584) esp_image: segment 3: paddr=0016aab4 vaddr=3ffbf150 size=04a98h ( 19096) load
+I (591) esp_image: segment 4: paddr=0016f554 vaddr=40080000 size=1c450h (115792) load
+I (639) esp_image: segment 5: paddr=0018b9ac vaddr=50000000 size=00028h (    40) load
+I (653) boot: Loaded app from partition at offset 0x20000
+I (654) boot: Disabling RNG early entropy source...
+I (664) cpu_start: Multicore app
+I (672) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (673) cpu_start: Pro cpu start user code
+I (673) cpu_start: cpu freq: 240000000 Hz
+I (675) app_init: Application information:
+I (678) app_init: Project name:     wifiblu
+I (682) app_init: App version:      0.1.0
+I (686) app_init: Compile time:     Oct 30 2026 15:49:09
+I (691) app_init: ELF file SHA256:  167670972...
+I (695) app_init: ESP-IDF:          v6.1
+I (699) efuse_init: Min chip rev:     v0.0
+I (703) efuse_init: Max chip rev:     v3.99 
+I (707) efuse_init: Chip rev:         v3.0
+I (711) heap_init: Initializing. RAM available for dynamic allocation:
+I (717) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (722) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (727) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (732) heap_init: At 3FFD2CC0 len 0000D340 (52 KiB): DRAM
+I (738) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (743) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (748) heap_init: At 4009C450 len 00003BB0 (14 KiB): IRAM
+W (755) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (767) spi_flash: detected chip: generic
+I (770) spi_flash: flash io: dio
+I (775) coexist: coex firmware version: a830d28
+I (778) main_task: Started on CPU0
+I (778) main_task: Calling app_main()
+I (778) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (798) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (798) BTDM_INIT: BT controller compile version [4a0f94d]
+I (798) BTDM_INIT: Using main XTAL as clock source
+I (808) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (808) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+I (1278) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+I (1288) audio: DAC profile P0 (-12.0 dB): limit found by the power self-test for this supply
+W (1288) gpio: conflict found for GPIO[21]
+I (1398) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (1398) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (1398) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1408) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (1418) audio: Engine: music 1x gain + limiter, DAC P0, call volume 10/15, mic gain 2.0x
+I (1428) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (1438) es8388: ADC/microphones OFF
+I (1438) touch: Calibration: do not touch pads for 1 second
+I (1438) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1448) audio: Path: MUSIC at 44100 Hz
+I (2378) touch: PLAY GPIO33 baseline=1278
+I (2378) touch: SET GPIO32 baseline=1278
+I (2378) touch: VOL+ GPIO27 baseline=1157
+I (2378) touch: VOL- GPIO13 baseline=840
+I (2378) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold 6 s: Wi-Fi setup), VOL +/-
+W (2408) BT_BTC: A2DP Enable with AVRC
+I (2448) bt: READY: music (A2DP) + calls (HFP). Select 'wifi blu' in the phone's Bluetooth list
+I (2448) bt: 2 bonded phone(s); will try 2c:d0:66:b0:8c:74 (last connected) in 3 s, then the others in turn
+I (2468) wifi:wifi driver task: 3fff769c, prio:23, stack:6656, core=0
+I (2468) wifi:wifi firmware version: e12a754
+I (2468) wifi:wifi certification version: v7.0
+I (2468) wifi:config NVS flash: enabled
+I (2468) wifi:config nano formatting: disabled
+I (2478) wifi:Init data frame dynamic rx buffer num: 8
+I (2478) wifi:Init static rx mgmt buffer num: 5
+I (2488) wifi:Init management short buffer num: 32
+I (2488) wifi:Init dynamic tx buffer num: 8
+I (2498) wifi:Init static rx buffer size: 1600
+I (2498) wifi:Init static rx buffer num: 6
+I (2498) wifi:Init dynamic rx buffer num: 8
+I (2508) wifi_init: accept mbox: 6
+I (2508) wifi_init: tcpip mbox: 32
+I (2508) wifi_init: udp mbox: 6
+I (2518) wifi_init: tcp mbox: 6
+I (2518) wifi_init: tcp tx win: 5760
+I (2518) wifi_init: tcp rx win: 5760
+I (2528) wifi_init: tcp mss: 1440
+I (2528) wifi_init: WiFi IRAM OP enabled
+I (2528) wifi_init: WiFi RX IRAM OP enabled
+I (2538) wifi:Set ps type: 1, coexist: 0
+
+I (2548) wifi:mode : sta (08:3a:f2:31:29:3c)
+I (2548) wifi:enable tsf
+I (2548) wifi: No network saved: opening the setup hotspot
+I (2548) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (2558) wifi:Total power save buffer number: 4
+I (2558) wifi:Init max length of beacon: 752/752
+I (2568) wifi:Init max length of beacon: 752/752
+I (2568) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2578) wifi:Total power save buffer number: 4
+I (2588) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2588) example_dns_redirect_server: Socket created
+I (2598) example_dns_redirect_server: Socket bound, port 53
+I (2598) example_dns_redirect_server: Waiting for data
+I (2608) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (2618) boot: Heap before web server: free=4540 bytes, largest block=4352 bytes
+E (2628) web: HTTP server: ESP_ERR_HTTPD_TASK
+E (2628) boot: Control page not started; Bluetooth audio continues
+I (2638) boot: Initialized; running from ota_0; free heap=4400 bytes
+I (2638) main_task: Returned from app_main()
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 28 2026 04:49:12
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ea00h (256512) map
+I (190) esp_image: segment 1: paddr=0005ea28 vaddr=3ffbdb60 size=015f0h (  5616) load
+I (193) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=10aa8ch (1092236) map
+I (584) esp_image: segment 3: paddr=0016aab4 vaddr=3ffbf150 size=04a98h ( 19096) load
+I (591) esp_image: segment 4: paddr=0016f554 vaddr=40080000 size=1c450h (115792) load
+I (639) esp_image: segment 5: paddr=0018b9ac vaddr=50000000 size=00028h (    40) load
+I (653) boot: Loaded app from partition at offset 0x20000
+I (654) boot: Disabling RNG early entropy source...
+I (664) cpu_start: Multicore app
+I (672) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (673) cpu_start: Pro cpu start user code
+I (673) cpu_start: cpu freq: 240000000 Hz
+I (675) app_init: Application information:
+I (678) app_init: Project name:     wifiblu
+I (682) app_init: App version:      0.1.0
+I (686) app_init: Compile time:     Oct 30 2026 15:49:09
+I (691) app_init: ELF file SHA256:  167670972...
+I (695) app_init: ESP-IDF:          v6.1
+I (699) efuse_init: Min chip rev:     v0.0
+I (703) efuse_init: Max chip rev:     v3.99 
+I (707) efuse_init: Chip rev:         v3.0
+I (711) heap_init: Initializing. RAM available for dynamic allocation:
+I (717) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (722) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (727) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (732) heap_init: At 3FFD2CC0 len 0000D340 (52 KiB): DRAM
+I (738) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (743) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (748) heap_init: At 4009C450 len 00003BB0 (14 KiB): IRAM
+W (755) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (767) spi_flash: detected chip: generic
+I (770) spi_flash: flash io: dio
+I (775) coexist: coex firmware version: a830d28
+I (778) main_task: Started on CPU0
+I (778) main_task: Calling app_main()
+I (778) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (798) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (798) BTDM_INIT: BT controller compile version [4a0f94d]
+I (798) BTDM_INIT: Using main XTAL as clock source
+I (808) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (808) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+I (1288) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+I (1288) audio: DAC profile P0 (-12.0 dB): limit found by the power self-test for this supply
+W (1288) gpio: conflict found for GPIO[21]
+I (1408) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (1408) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (1408) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1418) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (1428) audio: Engine: music 1x gain + limiter, DAC P0, call volume 10/15, mic gain 2.0x
+I (1438) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (1448) es8388: ADC/microphones OFF
+I (1448) touch: Calibration: do not touch pads for 1 second
+I (1448) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1458) audio: Path: MUSIC at 44100 Hz
+I (2388) touch: PLAY GPIO33 baseline=1278
+I (2388) touch: SET GPIO32 baseline=1278
+I (2388) touch: VOL+ GPIO27 baseline=1157
+I (2388) touch: VOL- GPIO13 baseline=840
+I (2388) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold 6 s: Wi-Fi setup), VOL +/-
+W (2418) BT_BTC: A2DP Enable with AVRC
+I (2458) bt: READY: music (A2DP) + calls (HFP). Select 'wifi blu' in the phone's Bluetooth list
+I (2458) bt: 2 bonded phone(s); will try 2c:d0:66:b0:8c:74 (last connected) in 3 s, then the others in turn
+I (2478) wifi:wifi driver task: 3fff7688, prio:23, stack:6656, core=0
+I (2478) wifi:wifi firmware version: e12a754
+I (2478) wifi:wifi certification version: v7.0
+I (2478) wifi:config NVS flash: enabled
+I (2478) wifi:config nano formatting: disabled
+I (2488) wifi:Init data frame dynamic rx buffer num: 8
+I (2488) wifi:Init static rx mgmt buffer num: 5
+I (2498) wifi:Init management short buffer num: 32
+I (2498) wifi:Init dynamic tx buffer num: 8
+I (2508) wifi:Init static rx buffer size: 1600
+I (2508) wifi:Init static rx buffer num: 6
+I (2508) wifi:Init dynamic rx buffer num: 8
+I (2518) wifi_init: accept mbox: 6
+I (2518) wifi_init: tcpip mbox: 32
+I (2518) wifi_init: udp mbox: 6
+I (2528) wifi_init: tcp mbox: 6
+I (2528) wifi_init: tcp tx win: 5760
+I (2528) wifi_init: tcp rx win: 5760
+I (2538) wifi_init: tcp mss: 1440
+I (2538) wifi_init: WiFi IRAM OP enabled
+I (2538) wifi_init: WiFi RX IRAM OP enabled
+I (2548) wifi:Set ps type: 1, coexist: 0
+
+I (2558) wifi:mode : sta (08:3a:f2:31:29:3c)
+I (2558) wifi:enable tsf
+I (2558) wifi: No network saved: opening the setup hotspot
+I (2558) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (2568) wifi:Total power save buffer number: 4
+I (2568) wifi:Init max length of beacon: 752/752
+I (2578) wifi:Init max length of beacon: 752/752
+I (2578) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2588) wifi:Total power save buffer number: 4
+I (2588) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2598) example_dns_redirect_server: Socket created
+I (2608) example_dns_redirect_server: Socket bound, port 53
+I (2608) example_dns_redirect_server: Waiting for data
+I (2618) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (2628) boot: Heap before web server: free=4560 bytes, largest block=4352 bytes
+E (2638) web: HTTP server: ESP_ERR_HTTPD_TASK
+E (2638) boot: Control page not started; Bluetooth audio continues
+I (2648) boot: Initialized; running from ota_0; free heap=4420 bytes
+I (2648) main_task: Returned from app_main()
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 28 2026 04:49:12
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ea00h (256512) map
+I (190) esp_image: segment 1: paddr=0005ea28 vaddr=3ffbdb60 size=015f0h (  5616) load
+I (193) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=10aa8ch (1092236) map
+I (584) esp_image: segment 3: paddr=0016aab4 vaddr=3ffbf150 size=04a98h ( 19096) load
+I (591) esp_image: segment 4: paddr=0016f554 vaddr=40080000 size=1c450h (115792) load
+I (639) esp_image: segment 5: paddr=0018b9ac vaddr=50000000 size=00028h (    40) load
+I (653) boot: Loaded app from partition at offset 0x20000
+I (654) boot: Disabling RNG early entropy source...
+I (664) cpu_start: Multicore app
+I (672) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (673) cpu_start: Pro cpu start user code
+I (673) cpu_start: cpu freq: 240000000 Hz
+I (675) app_init: Application information:
+I (678) app_init: Project name:     wifiblu
+I (682) app_init: App version:      0.1.0
+I (686) app_init: Compile time:     Oct 30 2026 15:49:09
+I (691) app_init: ELF file SHA256:  167670972...
+I (695) app_init: ESP-IDF:          v6.1
+I (699) efuse_init: Min chip rev:     v0.0
+I (703) efuse_init: Max chip rev:     v3.99 
+I (707) efuse_init: Chip rev:         v3.0
+I (711) heap_init: Initializing. RAM available for dynamic allocation:
+I (717) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (722) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (727) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (732) heap_init: At 3FFD2CC0 len 0000D340 (52 KiB): DRAM
+I (738) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (743) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (748) heap_init: At 4009C450 len 00003BB0 (14 KiB): IRAM
+W (755) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (767) spi_flash: detected chip: generic
+I (770) spi_flash: flash io: dio
+I (775) coexist: coex firmware version: a830d28
+I (778) main_task: Started on CPU0
+I (778) main_task: Calling app_main()
+I (778) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (798) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (798) BTDM_INIT: BT controller compile version [4a0f94d]
+I (798) BTDM_INIT: Using main XTAL as clock source
+I (808) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (808) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+I (1278) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+I (1288) audio: DAC profile P0 (-12.0 dB): limit found by the power self-test for this supply
+W (1288) gpio: conflict found for GPIO[21]
+I (1398) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (1398) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (1398) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1408) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (1418) audio: Engine: music 1x gain + limiter, DAC P0, call volume 10/15, mic gain 2.0x
+I (1428) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (1438) es8388: ADC/microphones OFF
+I (1438) touch: Calibration: do not touch pads for 1 second
+I (1438) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1448) audio: Path: MUSIC at 44100 Hz
+I (2378) touch: PLAY GPIO33 baseline=1279
+I (2378) touch: SET GPIO32 baseline=1278
+I (2378) touch: VOL+ GPIO27 baseline=1157
+I (2378) touch: VOL- GPIO13 baseline=840
+I (2378) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold 6 s: Wi-Fi setup), VOL +/-
+W (2408) BT_BTC: A2DP Enable with AVRC
+I (2448) bt: READY: music (A2DP) + calls (HFP). Select 'wifi blu' in the phone's Bluetooth list
+I (2448) bt: 2 bonded phone(s); will try 2c:d0:66:b0:8c:74 (last connected) in 3 s, then the others in turn
+I (2468) wifi:wifi driver task: 3fff768c, prio:23, stack:6656, core=0
+I (2468) wifi:wifi firmware version: e12a754
+I (2468) wifi:wifi certification version: v7.0
+I (2468) wifi:config NVS flash: enabled
+I (2468) wifi:config nano formatting: disabled
+I (2478) wifi:Init data frame dynamic rx buffer num: 8
+I (2478) wifi:Init static rx mgmt buffer num: 5
+I (2488) wifi:Init management short buffer num: 32
+I (2488) wifi:Init dynamic tx buffer num: 8
+I (2498) wifi:Init static rx buffer size: 1600
+I (2498) wifi:Init static rx buffer num: 6
+I (2498) wifi:Init dynamic rx buffer num: 8
+I (2508) wifi_init: accept mbox: 6
+I (2508) wifi_init: tcpip mbox: 32
+I (2508) wifi_init: udp mbox: 6
+I (2518) wifi_init: tcp mbox: 6
+I (2518) wifi_init: tcp tx win: 5760
+I (2518) wifi_init: tcp rx win: 5760
+I (2528) wifi_init: tcp mss: 1440
+I (2528) wifi_init: WiFi IRAM OP enabled
+I (2528) wifi_init: WiFi RX IRAM OP enabled
+I (2538) wifi:Set ps type: 1, coexist: 0
+
+I (2548) wifi:mode : sta (08:3a:f2:31:29:3c)
+I (2548) wifi:enable tsf
+I (2548) wifi: No network saved: opening the setup hotspot
+I (2548) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (2558) wifi:Total power save buffer number: 4
+I (2558) wifi:Init max length of beacon: 752/752
+I (2568) wifi:Init max length of beacon: 752/752
+I (2568) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2578) wifi:Total power save buffer number: 4
+I (2588) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (2588) example_dns_redirect_server: Socket created
+I (2598) example_dns_redirect_server: Socket bound, port 53
+I (2598) example_dns_redirect_server: Waiting for data
+I (2608) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (2618) boot: Heap before web server: free=4556 bytes, largest block=4352 bytes
+E (2628) web: HTTP server: ESP_ERR_HTTPD_TASK
+E (2628) boot: Control page not started; Bluetooth audio continues
+I (2638) boot: Initialized; running from ota_0; free heap=4416 bytes
+I (2638) main_task: Returned from app_main()
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 28 2026 04:49:12
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition

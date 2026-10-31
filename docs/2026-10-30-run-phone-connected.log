@@ -1,0 +1,60 @@
+I (413161) audio: MUSIC 44100 Hz PA=1 in_peak=19703 out_peak=9654 mic_peak=0 frames=221312 limited=0 P2
+I (413161) audio: music buffer=17920 B drops=0 underruns=1 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (418181) audio: MUSIC 44100 Hz PA=1 in_peak=22377 out_peak=10964 mic_peak=0 frames=220544 limited=0 P2
+I (418181) audio: music buer=20992 B drops=0 underruns=2 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_erors=0
+I (423201) audio: MUSIC 44100 Hz PA=1 in_peak=22984 out_peak=11262 mic_peak=0 frames=221312 limited=0 P2
+I (423201) audio: music buffer=20992 B drops=0 underruns=2 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+W (423571) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 1). DAC profile lowered to P1 (-10.5 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (423581) es8388: DAC profile P1: -10.5 dB (reg 0x15)
+I (423581) es8388: ADC/microphones OFF
+I (423581) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (423591) audio: Path: MUSIC at 44100 Hz
+I (428211) audio: MUSIC 44100 Hz PA=1 in_peak=23319 out_peak=11426 mic_peak=0 frames=216064 limited=0 P1
+I (428221) audio: music buffer=21504 B drops=0 underruns=3 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (428221) audio: brownout guard events since boot: 1
+I (433241) audio: MUSIC 44100 Hz PA=1 in_peak=23088 out_peak=11210 mic_peak=0 frames=221440 limited=0 P1
+I (433241) audio: music buffer=17408 B drops=0 underruns=3 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (433241) audio: brownout guard events since boot: 1
+I (438251) audio: MUSIC 44100 Hz PA=1 in_peak=23071 out_peak=11304 mic_peak=0 frames=221312 limited=0 P1
+I (438251) audio: music buffer=13824 B drops=0 underruns=3 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (438261) audio: brownout guard events since boot: 1
+I (439121) call: Phone signal 2/5
+I (443271) audio: MUSIC 44100 Hz PA=1 in_peak=22856 out_peak=11199 mic_peak=0 frames=221312 limited=0 P1
+I (443271) audio: music buffer=21504 B drops=0 underruns=3 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (443281) audio: brownout guard events since boot: 1
+I (448291) audio: MUSIC 44100 Hz PA=1 in_peak=22844 out_peak=10716 mic_peak=0 frames=221312 limited=0 P1
+I (448291) audio: music bufer=17920 B drops=0 underruns=3 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (448301) audio: brownout guard events since boot: 1
+I (451261) touch: VOL+ GPIO27 pressed (raw=578)
+I (451271) audio: Music volume 75%
+I (451771) audio: Music volume 80%
+I (451991) audio: Music volume 85%
+I (452211) audio: Music volume 90%
+I (452511) touch: VOL+ GPIO27 pressed (raw=480)
+I (452511) audio: Music volume 95%
+I (453031) audio: Music volume 100%
+I (453251) audio: Music volume 100%
+I (453311) audio: MUSIC 44100 Hz PA=1 in_peak=22902 out_peak=12310 mic_peak=0 frames=221440 limited=0 P1
+I (453311) audio: music buffer=17408 B drops=0 underruns=3 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (453321) audio: brownout guard events since boot: 1
+I (453451) audio: Music volume 100%
+I (453671) audio: Music volume 100%
+I (453881) audio: Music volume 100%
+I (454131) audio: Music volume 100%
+I (454331) audio: Music volume 100%
+I (454551) audio: Music volume 100%
+W (455221) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 2). DAC profile lowered to P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (455231) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (455241) es8388: ADC/microphones OFF
+I (455241) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (455241) audio: Path: MUSIC at 44100 Hz
+I (458331) audio: MUSIC 44100 Hz PA=1 in_peak=13989 out_peak=13989 mic_peak=0 frames=216064 limited=0 P0
+I (458331) audio: music buffer=10752 B drops=0 underruns=3 | cll rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (458341) audio: brownout guard events since boot: 2
+I (463351) audio: MUSIC 44100 Hz PA=1 in_peak=10605 out_peak=10605 mic_peak=0 frames=221312 limited=0 P0
+I (463351) audio: music bfer=17920 B drops=0 underruns=3 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (463351) audio: brownout guard events since boot: 2
+I (464271) call: Phone signal 3/5
+I (468371) audio: MUSIC 44100 Hz PA=1 in_peak=12805 out_peak=11845 mic_peak=0 frames=220544 limited=0 P0
+I (468371) audio: music buffer=13824 B drops=0 underruns=4 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (468381) audio: brownout guard events since boot: 2

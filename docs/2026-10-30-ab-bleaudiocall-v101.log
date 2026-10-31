@@ -1,0 +1,131 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15824
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 27 2026 18:13:25
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (69) boot:  2 factory          factory app      00 00 00010000 00300000
+I (75) boot: End of partition table
+I (79) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=27914h (162068) map
+I (144) esp_image: segment 1: paddr=0003793c vaddr=3ffbdb60 size=04f7ch ( 20348) load
+I (152) esp_image: segment 2: paddr=0003c8c0 vaddr=40080000 size=03758h ( 14168) load
+I (158) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=87858h (555096) map
+I (356) esp_image: segment 4: paddr=000c7880 vaddr=40083758 size=11d4ch ( 73036) load
+I (386) esp_image: segment 5: paddr=000d95d4 vaddr=50000000 size=00028h (    40) load
+I (397) boot: Loaded app from partition at offset 0x10000
+I (397) boot: Disabling RNG early entropy source...
+I (408) cpu_start: Multicore app
+I (416) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (416) cpu_start: Pro cpu start user code
+I (416) cpu_start: cpu freq: 240000000 Hz
+I (418) app_init: Application information:
+I (422) app_init: Project name:     bleaudiocall
+I (426) app_init: App version:      1.0.1
+I (430) app_init: Compile time:     Oct 27 2026 18:13:42
+I (435) app_init: ELF file SHA256:  a346b6019...
+I (440) app_init: ESP-IDF:          v6.1
+I (443) efuse_init: Min chip rev:     v0.0
+I (447) efuse_init: Max chip rev:     v3.99 
+I (451) efuse_init: Chip rev:         v3.0
+I (455) heap_init: Initializing. RAM available for dynamic allocation:
+I (461) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (466) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (471) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (477) heap_init: At 3FFCD370 len 00012C90 (75 KiB): DRAM
+I (482) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (487) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (493) heap_init: At 400954A4 len 0000AB5C (42 KiB): IRAM
+W (499) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (511) spi_flash: detected chip: generic
+I (514) spi_flash: flash io: dio
+I (519) coexist: coex firmware version: a830d28
+I (523) main_task: Started on CPU0
+I (523) main_task: Calling app_main()
+I (523) boot: bleaudiocall: music + calls; reset reason=1 (power-on / EN pin)
+I (543) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (543) BTDM_INIT: BT controller compile version [4a0f94d]
+I (543) BTDM_INIT: Using main XTAL as clock source
+I (543) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (553) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+W (553) phy_init: failed to load RF calibration data (0x1102), falling back to full calibration
+I (633) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(2)
+I (1023) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+I (1033) audio: DAC profile P2 (-9.0 dB): not yet calibrated, the power self-test runs now
+W (1033) gpio: conflict found for GPIO[21]
+I (1153) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (1153) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (1153) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1163) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (1173) audio: Engine: music 1x gain + limiter, DAC P2, call volume 10/15, mic gain 2.0x
+I (1183) es8388: DAC profile P2: -9.0 dB (reg 0x12)
+I (1193) es8388: ADC/microphones OFF
+I (1193) touch: Calibration: do not touch pads for 1 second
+I (1193) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (1203) audio: Path: MUSIC at 44100 Hz
+I (2133) touch: PLAY GPIO33 baseline=1276
+I (2133) touch: SET GPIO32 baseline=1276
+I (2133) touch: VOL+ GPIO27 baseline=1152
+I (2133) touch: VOL- GPIO13 baseline=836
+I (2133) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect), VOL +/-
+W (2163) BT_BTC: A2DP Enable with AVRC
+W (2193) audio: POWER SELF-TEST: 60 Hz tone at -3 dBFS on both speakers with the radio busy (inquiry), P0..P4, 1500 ms each, to findhe loudest level this supply holds. A reset during the test is expected on a weak supply; the result is saved either way.
+I (2193) bt: READY: music (A2DP) + calls (HFP). Select 'blu2' in the phone's Bluetooth list
+I (2193) bt: No bonded phone yet: pair from the phone (PIN 0000 if asked)
+I (2213) console: Keys: a answer, h hangup/reject, m redial, c connect bonded phone, x disconnect, v list bonds, f forget bonds, i status, t ring tone test, l/r/z/b tones, ]/[ DAC +-1.5 dB, 0 reset DAC + self-test, k power self-test
+I (2233) boot: Initialized; free heap=70232 bytes
+I (2243) main_task: Returned from app_main()
+I (2503) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (2503) es8388: ADC/microphones OFF
+I (2503) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (2503) audio:   self-test P0 (-12.0 dB)
+I (3213) bt: Radio: connectable, DISCOVERABLE (visible in the phone's list)
+I (4013) es8388: DAC profile P1: -10.5 dB (reg 0x15)
+I (4013) audio:   self-test P1 (-10.5 dB)
+I (5513) es8388: DAC profile P2: -9.0 dB (reg 0x12)
+I (5513) audio:   self-test P2 (-9.0 dB)
+I (7013) es8388: DAC profile P3: -7.5 dB (reg 0x0f)
+I (7013) audio:   self-test P3 (-7.5 dB)
+I (8513) es8388: DAC profile P4: -6.0 dB (reg 0x0c)
+I (8513) audio:   self-test P4 (-6.0 dB)
+W (8523) audio: POWER SELF-TEST: the brownout guard cut the amplifier at P4 (-6.0 dB); saving P2 (-9.0 dB) with 1 step(s) of margin. No reset.
+I (8923) es8388: DAC profile P2: -9.0 dB (reg 0x12)
+I (8923) es8388: ADC/microphones OFF
+I (8923) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (8933) audio: Path: MUSIC at 44100 Hz
+I (8933) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P2
+I (8943) audio: music buffer=0 B drops=0 underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (8953) audio: brownout guard events since boot: 1
+I (13953) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P2
+I (13953) audio: music buffer=0 B drops=0 underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (13963) audio: brownout guard events since boot: 1
+I (18973) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P2
+I (18973) audio: music buffer=0 B drops=underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (18973) audio: brownout guard events since boot: 1
+I (23983) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P2
+I (23983) audio: music buffer=0 B drops=0 underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (23993) audio: brownout guard events since boot: 1
+I (29003) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P2
+I (29003) audio: music buffer=0 B drops=0 underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (29013) audio: brownout guard events since boot: 1
+I (34013) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P2
+I (34013) audio: music buffer=0 B drops=0 underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (34023) audio: brownout guard events since boot: 1
+I (39033) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P2
+I (39033) audio: music buffer=0 B drops=0 underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (39043) audio: brownout guard events since boot: 1

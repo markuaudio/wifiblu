@@ -1,0 +1,556 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 30 2026 20:36:53
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) boot: No factory image, trying OTA 0
+I (95) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ebd0h (256976) map
+I (194) esp_image: segment 1: paddr=0005ebf8 vaddr=3ffbdb60 size=01420h (  5152) load
+I (197) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=1114e0h (1119456) map
+I (597) esp_image: segment 3: paddr=00171508 vaddr=3ffbef80 size=04cd8h ( 19672) load
+I (605) esp_image: segment 4: paddr=001761e8 vaddr=40080000 size=174e8h ( 95464) load
+I (645) esp_image: segment 5: paddr=0018d6d8 vaddr=50000000 size=00028h (    40) load
+I (657) boot: Loaded app from partition at offset 0x20000
+I (658) boot: Set actual ota_seq=1 in otadata[0]
+I (658) boot: Disabling RNG early entropy source...
+I (672) quad_psram: This chip is ESP32-D0WD
+I (672) esp_psram: Found 8MB PSRAM device
+I (672) esp_psram: Speed: 40MHz
+I (672) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.
+W (679) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped
+I (687) cpu_start: Multicore app
+I (1548) esp_psram: SPI SRAM memory test OK
+I (1556) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (1556) cpu_start: Pro cpu start user code
+I (1556) cpu_start: cpu freq: 240000000 Hz
+I (1558) app_init: Application information:
+I (1562) app_init: Project name:     wifiblu
+I (1566) app_init: App version:      0.1.0
+I (1570) app_init: Compile time:     Oct 30 2026 20:38:11
+I (1575) app_init: ELF file SHA256:  4e57e3d40...
+I (1579) app_init: ESP-IDF:          v6.1
+I (1583) efuse_init: Min chip rev:     v3.0
+I (1587) efuse_init: Max chip rev:     v3.99 
+I (1591) efuse_init: Chip rev:         v3.0
+I (1595) heap_init: Initializing. RAM available for dynamic allocation:
+I (1601) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (1606) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (1612) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (1617) heap_init: At 3FFD2C28 len 0000D3D8 (52 KiB): DRAM
+I (1622) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (1628) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (1633) heap_init: At 400974E8 len 00008B18 (34 KiB): IRAM
+I (1639) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator
+W (1646) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (1658) spi_flash: detected chip: generic
+I (1662) spi_flash: flash io: dio
+I (1667) coexist: coex firmware version: a830d28
+I (1670) main_task: Started on CPU0
+I (1670) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (1680) main_task: Calling app_main()
+I (1680) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (1710) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (1710) BTDM_INIT: BT controller compile version [4a0f94d]
+I (1710) BTDM_INIT: Using main XTAL as clock source
+I (1710) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (1720) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+I (2180) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+I (2190) audio: DAC profile P0 (-12.0 dB): limit found by the power self-test for this supply
+W (2190) gpio: conflict found for GPIO[21]
+I (2310) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (2310) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (2310) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (2320) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (2330) audio: Engine: music 1x gain + limiter, DAC P0, call volume 10/15, mic gain 2.0x
+I (2340) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (2350) es8388: ADC/microphones OFF
+I (2350) touch: Calibration: do not touch pads for 1 second
+I (2350) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (2360) audio: Path: MUSIC at 44100 Hz
+I (3290) touch: PLAY GPIO33 baseline=1277
+I (3290) touch: SET GPIO32 baseline=1276
+I (3290) touch: VOL+ GPIO27 baseline=1153
+I (3290) touch: VOL- GPIO13 baseline=836
+I (3290) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold 6 s: Wi-Fi setup), VOL +/-
+W (3320) BT_BTC: A2DP Enable with AVRC
+I (3360) bt: READY: music (A2DP) + calls (HFP). Select 'wifi blu' in the phone's Bluetooth list
+I (3370) bt: 2 bonded phone(s); will try 2c:d0:66:b0:8c:74 (last connected) in 3 s, then the others in turn
+I (3390) wifi:wifi driver task: 3ffed704, prio:23, stack:6656, core=0
+I (3390) wifi:wifi firmware version: e12a754
+I (3390) wifi:wifi certification version: v7.0
+I (3390) wifi:config NVS flash: enabled
+I (3390) wifi:config nano formatting: disabled
+I (3400) wifi:Init data frame dynamic rx buffer num: 8
+I (3400) wifi:Init static rx mgmt buffer num: 5
+I (3410) wifi:Init management short buffer num: 32
+I (3410) wifi:Init dynamic tx buffer num: 8
+I (3420) wifi:Init static rx buffer size: 1600
+I (3420) wifi:Init static rx buffer num: 6
+I (3420) wifi:Init dynamic rx buffer num: 8
+I (3430) wifi_init: accept mbox: 6
+I (3430) wifi_init: tcpip mbox: 32
+I (3430) wifi_init: udp mbox: 6
+I (3440) wifi_init: tcp mbox: 6
+I (3440) wifi_init: tcp tx win: 5760
+I (3440) wifi_init: tcp rx win: 5760
+I (3450) wifi_init: tcp mss: 1440
+I (3450) wifi_init: WiFi/LWIP prefer SPIRAM
+I (3450) wifi:Set ps type: 1, coexist: 0
+
+I (3460) wifi:mode : sta (08:3a:f2:31:29:3c)
+I (3460) wifi:enable tsf
+I (3470) wifi: No network saved: opening the setup hotspot
+I (3470) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (3480) wifi:Total power save buffer number: 4
+I (3480) wifi:Init max length of beacon: 752/752
+I (3480) wifi:Init max length of beacon: 752/752
+I (3500) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (3500) wifi:Total power save buffer number: 4
+I (3510) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (3510) example_dns_redirect_server: Socket created
+I (3510) example_dns_redirect_server: Socket bound, port 53
+I (3520) example_dns_redirect_server: Waiting for data
+I (3520) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (3540) boot: Heap before web server: internal free=57387 bytes (largest block 57344), PSRAM free=4138944 bytes
+I (3550) web: Control page on port 80
+I (3550) console: Keys: a answer, h hangup/reject, m redial, c connect bonded phone, x disconnect, v list bonds, f forget bonds, i status, t rintone test, l/r/z/b tones, ]/[ DAC +-1.5 dB, 0 reset DAC + self-test, k power self-test, w Wi-Fi status, W Wi-Fi setup hotspot, n forget Wi-Fi network
+I (3560) boot: Initialized; running from ota_0; free heap=4182559 bytes (internal 44167)
+I (3580) main_task: Returned from app_main()
+W (3610) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 1). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (4020) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 2). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (4370) bt: Radio: connectable, DISCOVERABLE (visible in the phone's list)
+W (4430) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 3). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (4840) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 4). DAC profile stays at P0 (-12.0 ). No reset, phone stays connected; audio resumes in 400 ms
+W (5250) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 5). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (5660) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 6). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (6070) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 7). DAC profile stays at P0 (-12.0 B). No reset, phone stays connected; audio resumes in 400 ms
+W (6480) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 8). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (6890) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 9). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (7300) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 10). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (7340) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (7340) audio: music buffer=0 B drops=0 nderruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (7350) audio: brownout guard events since boot: 10
+I (7370) bt: Reconnect attempt 1 to last connected phone 2c:d0:66:b0:8c:74 (next in 10 s)
+I (7370) bt: Opening music (A2DP) to 2c:d0:66:b0:8c:74 ourselves
+W (7370) BT_APPL: reset flags
+I (7380) music: A2DP connecting...
+W (7620) BT_HCI: hcif conn complete: hdl 0x81, st 0x0
+I (7630) bt: Radio link with 2c:d0:66:b0:8c:74: status 0x0
+W (7710) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 11). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (8110) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 12). DAC profile stays at P0 (-12.0dB). No reset, phone stays connected; audio resumes in 400 ms
+E (8270) BT_BTM: tBTM_SEC_DEV:0x3f8012c8 rs_disc_pending=0
+
+W (8340) BT_HCI: hcif link supv_to changed: hdl 0x81, supv_to 8000
+I (8400) audio: Music PCM 44100 Hz, 2 channel(s)
+I (8400) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (8400) es8388: ADC/microphones OFF
+I (8400) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (8410) audio: Path: MUSIC at 44100 Hz
+W (8520) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 13). DAC profile stays at P0 (-12.0 dB). No reset phone stays connected; audio resumes in 400 ms
+W (8550) BT_APPL: new conn_srvc id:19, app_id:0
+I (8560) bt: Music (A2DP) connected to 2c:d0:66:b0:8c:74
+W (8940) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 14). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (9340) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 15). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (9370) bt: Radio: connectable, hidden while a phone is connected
+W (9750) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 16). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (10160) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 17). DAC profile stays at P0 (-12.dB). No reset, phone stays connected; audio resumes in 400 ms
+I (10500) BT_LOG: bta_av_link_role_ok hndl:x41 role:1 conn_audio:x1 bits:1 features:x864b
+
+W (10500) BT_APPL: new conn_srvc id:19, app_id:1
+I (10510) music: Music STARTED
+I (10510) es8388: DAC profile P0: -12.0 dB (g 0x18)
+I (10510) es8388: ADC/microphones OFF
+I (10520) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (10530) audio: Path: MUSIC at 44100 Hz
+W (10570) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 18). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audi resumes in 400 ms
+W (11110) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 19). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (11610) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 20). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 30 2026 20:36:53
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ebd0h (256976) map
+I (191) esp_image: segment 1: paddr=0005ebf8 vaddr=3ffbdb60 size=01420h (  5152) load
+I (193) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=1114e0h (1119456) map
+I (593) esp_image: segment 3: paddr=00171508 vaddr=3ffbef80 size=04cd8h ( 19672) load
+I (601) esp_image: segment 4: paddr=001761e8 vaddr=40080000 size=174e8h ( 95464) load
+I (641) esp_image: segment 5: paddr=0018d6d8 vaddr=50000000 size=00028h (    40) load
+I (653) boot: Loaded app from partition at offset 0x20000
+I (653) boot: Disabling RNG early entropy source...
+I (664) quad_psram: This chip is ESP32-D0WD
+I (664) esp_psram: Found 8MB PSRAM device
+I (664) esp_psram: Speed: 40MHz
+I (664) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.
+W (671) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped
+I (679) cpu_start: Multicore app
+I (1539) esp_psram: SPI SRAM memory test OK
+I (1547) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (1548) cpu_start: Pro cpu start user code
+I (1548) cpu_start: cpu freq: 240000000 Hz
+I (1550) app_init: Application information:
+I (1554) app_init: Project name:     wifiblu
+I (1558) app_init: App version:      0.1.0
+I (1561) app_init: Compile time:     Oct 30 2026 20:38:11
+I (1567) app_init: ELF file SHA256:  4e57e3d40...
+I (1571) app_init: ESP-IDF:          v6.1
+I (1575) efuse_init: Min chip rev:     v3.0
+I (1579) efuse_init: Max chip rev:     v3.99 
+I (1583) efuse_init: Chip rev:         v3.0
+I (1587) heap_init: Initializing. RAM available for dynamic allocation:
+I (1593) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (1598) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (1603) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (1609) heap_init: At 3FFD2C28 len 0000D3D8 (52 KiB): DRAM
+I (1614) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (1619) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (1625) heap_init: At 400974E8 len 00008B18 (34 KiB): IRAM
+I (1631) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator
+W (1638) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (1650) spi_flash: detected chip: generic
+I (1654) spi_flash: flash io: dio
+I (1659) coexist: coex firmware version: a830d28
+I (1662) main_task: Started on CPU0
+I (1662) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (1672) main_task: Calling app_main()
+I (1672) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (1702) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (1702) BTDM_INIT: BT controller compile version [4a0f94d]
+I (1712) BTDM_INIT: Using main XTAL as clock source
+I (1712) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (1722) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+I (1782) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)
+I (2202) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+W (2202) audio: Reset while the amplifier was on (EN pin / power switch). If nobody switched it off, the supply collapsed faster than the brownout guard could cut the amplifier
+I (2222) audio: DAC profile P0 (-12.0 dB): limit found by the power self-test for this supply
+W (2222) gpio: conflict found for GPIO[21]
+I (2342) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (2342) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (2342) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (2352) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (2362) audio: Engine: music 1x gain + limiter, DAC P0, call volume 10/15, mic gain 2.0x
+I (2372) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (2382) es8388: ADC/microphones OFF
+I (2382) touch: Calibration: do not touch pads for 1 second
+I (2382) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (2392) audio: Path: MUSIC at 44100 Hz
+I (3322) touch: PLAY GPIO33 baseline=1277
+I (3322) touch: SET GPIO32 baseline=1277
+I (3322) touch: VOL+ GPIO27 baseline=1153
+I (3322) touch: VOL- GPIO13 baseline=836
+I (3322) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold 6 s: Wi-Fi setup), VOL +/-
+W (3352) BT_BTC: A2DP Enable with AVRC
+I (3392) bt: READY: music (A2DP) + calls (HFP). Select 'wifi blu' in the phone's Bluetooth list
+I (3402) bt: 2 bonded phone(s); will try 2c:d0:66:b0:8c:74 (last connected) in 3 s, then the others in turn
+I (3422) wifi:wifi driver task: 3ffed7a4, prio:23, stack:6656, core=0
+I (3422) wifi:wifi firmware version: e12a754
+I (3422) wifi:wifi certification version: v7.0
+I (3422) wifi:config NVS flash: enabled
+I (3422) wifi:config nano formatting: disabled
+I (3432) wifi:Init data frame dynamic rx buffer num: 8
+I (3432) wifi:Init static rx mgmt buffer num: 5
+I (3442) wifi:Init management short buffer num: 32
+I (3442) wifi:Init dynamic tx buffer num: 8
+I (3452) wifi:Init static rx buffer size: 1600
+I (3452) wifi:Init static rx buffer num: 6
+I (3452) wifi:Init dynamic rx buffer num: 8
+I (3462) wifi_init: accept mbox: 6
+I (3462) wifi_init: tcpip mbox: 32
+I (3462) wifi_init: udp mbox: 6
+I (3472) wifi_init: tcp mbox: 6
+I (3472) wifi_init: tcp tx win: 5760
+I (3472) wifi_init: tcp rx win: 5760
+I (3482) wifi_init: tcp mss: 1440
+I (3482) wifi_init: WiFi/LWIP prefer SPIRAM
+I (3482) wifi:Set ps type: 1, coexist: 0
+
+I (3492) wifi:mode : sta (08:3a:f2:31:29:3c)
+I (3492) wifi:enable tsf
+I (3502) wifi: No network saved: opening the setup hotspot
+I (3502) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (3512) wifi:Total power save buffer number: 4
+I (3512) wifi:Init max length of beacon: 752/752
+I (3512) wifi:Init max length of beacon: 752/752
+I (3532) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (3532) wifi:Total power save buffer number: 4
+I (3542) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (3542) example_dns_redirect_server: Socket created
+I (3542) example_dns_redirect_server: Socket bound, port 53
+I (3552) example_dns_redirect_server: Waiting for data
+I (3552) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (3572) boot: Heap before web server: internal free=57227 bytes (largest block 55296), PSRAM free=4138948 bytes
+I (3582) web: Control page on port 80
+I (3582) console: Keys: a answer, h hangup/reject, m redial, c connect bonded phone, x disconnect, v list bonds, f forget bonds, i status, t ring tone test, l/r/z/b tones, ]/[ DAC +-1.5 dB, 0 reset DAC + self-test, k power self-test, w Wi-Fi status, W Wi-Fi setup hotspot, n forget Wi-Fi network
+I (3592) boot: Initialized; running from ota_0; free heap=4182395 bytes (internal 44007)
+I (3612) main_task: Returned from app_main()
+W (3642) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 1). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (4052) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 2). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (4402) bt: Radio: connectable, DISCOVERABLE (visible in the phone's list)
+W (4462) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 3). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (4872) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 4). DAC profile stays at P0 (-12.0 B). No reset, phone stays connected; audio resumes in 400 ms
+W (5282) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 5). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (5692) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 6). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (6102) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 7). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (6512) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 8). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (6922) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 9). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (7332) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 10). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio reumes in 400 ms
+I (7372) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (7372) audio: music buffer=0 B drops=0 derruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (7382) audio: brownout guard events since boot: 10
+I (7402) bt: Reconnect attempt 1 to last connected phone 2c:d0:66:b0:8c:74 (next in 10 s)
+I (7402) bt: Opening music (A2DP) to 2c:d0:66:b0:8c:74 ourselves
+W (7402) BT_APPL: reset flags
+I (7412) music: A2DP connecting...
+W (7742) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 11). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (8142) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 12). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (8562) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 13). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (8962) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 14). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (9372) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 15). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (9782) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 16). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (10192) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 17). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resume in 400 ms
+W (10602) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 18). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (11012) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 19). DAC profile stays at P0 (-12. dB). No reset, phone stays connected; audio resumes in 400 ms
+W (11422) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 20). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (11832) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 21). DAC profile stays at P0 (-12.0dB). No reset, phone stays connected; audio resumes in 400 ms
+W (12242) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 22). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (12392) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (12392) audio: music buffer=0 B drops=0 underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (12392) audio: brownout guard events since boot: 22
+W (12532) BT_SDP: SDP - Rcvd conn cnf with error: 0x4  CID 0x40
+
+W (12532) BT_HCI: hcif conn complete: hdl 0xfff, st 0x4
+I (12532) bt: Radio link with 2c:d0:66:b0:8c:74: status 0x104 (0x104 = page timeout: phone off / out of range)
+W (12542) BT_BTC: BTA_AV_OPEN_EVT::FAILED status: 2
+
+I (12542) bt: Music (A2DP) attempt failed (phone not reachable)
+W (12652) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 23). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (13062) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 24). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (13472) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 25). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (13882) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 26). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (13902) BT_HCI: hcif conn complete: hdl 0x80, st 0x0
+I (13902) bt: Radio link with 2c:d0:66:b0:8c:74: status 0x0
+W (13922) BT_HCI: hcif link supv_to changed: hdl 0x80, supv_to 8000
+W (14292) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 27). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (14352) BT_APPL: new conn_srvc id:27, app_id:1
+I (14362) call: Link state 2 (3 = ready for calls), phone features 0x0
+I (14592) call: Call ended / none
+I (14592) call: Call setup: none
+I (14592) call: Phone network available
+I (14592) call: Phone signal 3/5
+I (14592) call: Roaming inactive
+I (14612) call: Phone battery 3/5
+I (14612) call: Call held status 0
+I (14672) call: Link state 3 (3 = ready for calls), phone features 0xf67
+I (14672) bt: Calls (HFP) connected to 2c:d0:66:b0:8c:74
+W (14712) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 28). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (14732) call: Phone signal 2/5
+W (15212) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 29). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (15402) bt: Radio: connectable, hidden while a phone is connected
+W (15622) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 30). DAC profile stays at P0 (-12.0dB). No reset, phone stays connected; audio resumes in 400 ms
+W (16032) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 31). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (16442) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 32). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (16852) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 33). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (17262) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 34). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+I (17402) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (17402) audio: music buffer=0 B drops=0 underruns=0 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (17412) audio: brownout guard events since boot: 34
+W (17672) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 35). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (18082) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 36). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (18492) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 37). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (18892) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 38). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (19312) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 39). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (19712) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 40). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (20132) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 41). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (20542) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 42). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (20952) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 43). DAC profile stays at P0 (-12.0B). No reset, phone stays connected; audio resumes in 400 ms
+I (21152) music: A2DP connecting...
+I (21232) audio: Music PCM 44100 Hz, 2 channel(s)
+I (21242) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (21242) es8388: ADC/microphones OFF
+I (21242) i2s: TX cl�ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x1f (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15896
+load:0x40080400,len:3988
+entry 0x40080644
+I (27) boot: ESP-IDF v6.1 2nd stage bootloader
+I (27) boot: compile time Oct 30 2026 20:36:53
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v3.0
+I (31) boot.esp32: SPI Speed      : 40MHz
+I (35) boot.esp32: SPI Mode       : DIO
+I (39) boot.esp32: SPI Flash Size : 8MB
+I (42) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (49) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (69) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (75) boot:  3 ota_0            OTA app          00 10 00020000 00300000
+I (82) boot:  4 ota_1            OTA app          00 11 00320000 00300000
+I (88) boot: End of partition table
+I (92) esp_image: segment 0: paddr=00020020 vaddr=3f400020 size=3ebd0h (256976) map
+I (191) esp_image: segment 1: paddr=0005ebf8 vaddr=3ffbdb60 size=01420h (  5152) load
+I (193) esp_image: segment 2: paddr=00060020 vaddr=400d0020 size=1114e0h (1119456) map
+I (593) esp_image: segment 3: paddr=00171508 vaddr=3ffbef80 size=04cd8h ( 19672) load
+I (601) esp_image: segment 4: paddr=001761e8 vaddr=40080000 size=174e8h ( 95464) load
+I (641) esp_image: segment 5: paddr=0018d6d8 vaddr=50000000 size=00028h (    40) load
+I (653) boot: Loaded app from partition at offset 0x20000
+I (653) boot: Disabling RNG early entropy source...
+I (664) quad_psram: This chip is ESP32-D0WD
+I (664) esp_psram: Found 8MB PSRAM device
+I (664) esp_psram: Speed: 40MHz
+I (664) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.
+W (671) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped
+I (679) cpu_start: Multicore app
+I (1539) esp_psram: SPI SRAM memory test OK
+I (1547) cpu_start: GPIO 3 and 1 are used as console UART I/O pins
+I (1548) cpu_start: Pro cpu start user code
+I (1548) cpu_start: cpu freq: 240000000 Hz
+I (1550) app_init: Application information:
+I (1554) app_init: Project name:     wifiblu
+I (1558) app_init: App version:      0.1.0
+I (1561) app_init: Compile time:     Oct 30 2026 20:38:11
+I (1567) app_init: ELF file SHA256:  4e57e3d40...
+I (1571) app_init: ESP-IDF:          v6.1
+I (1575) efuse_init: Min chip rev:     v3.0
+I (1579) efuse_init: Max chip rev:     v3.99 
+I (1583) efuse_init: Chip rev:         v3.0
+I (1587) heap_init: Initializing. RAM available for dynamic allocation:
+I (1593) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM
+I (1598) heap_init: At 3FFB6BF8 len 00001408 (5 KiB): DRAM
+I (1603) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM
+I (1609) heap_init: At 3FFD2C28 len 0000D3D8 (52 KiB): DRAM
+I (1614) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (1619) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (1625) heap_init: At 400974E8 len 00008B18 (34 KiB): IRAM
+I (1631) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator
+W (1638) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig
+I (1650) spi_flash: detected chip: generic
+I (1654) spi_flash: flash io: dio
+I (1659) coexist: coex firmware version: a830d28
+I (1662) main_task: Started on CPU0
+I (1662) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (1672) main_task: Calling app_main()
+I (1672) boot: wifiblu: music + calls (+ Wi-Fi planned); reset reason=1 (power-on / EN pin)
+I (1702) bt: Starting Bluetooth radio before codec/I2S/touch initialization
+I (1702) BTDM_INIT: BT controller compile version [4a0f94d]
+I (1702) BTDM_INIT: Using main XTAL as clock source
+I (1702) BTDM_INIT: Bluetooth MAC: 08:3a:f2:31:29:3e
+I (1712) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06
+I (2182) bt: Radio and host enabled, own address 08:3a:f2:31:29:3e
+I (2182) audio: DAC profile P0 (-12.0 dB): limit found by the power self-test for this supply
+W (2192) gpio: conflict found for GPIO[21]
+I (2302) es8388: Ready: DAC P2 (-9.0 dB) -> LOUT1 0 dB -> PA; mics LIN1/RIN1 PGA reg 0x88 (ADC off until a call)
+W (2302) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+I (2302) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (2312) guard: Brownout guard armed at level 7 (2.80 V): a sagging rail cuts the amplifier instead of resetting
+I (2322) audio: Engine: music 1x gain + limiter, DAC P0, call volume 10/15, mic gain 2.0x
+I (2332) es8388: DAC profile P0: -12.0 dB (reg 0x18)
+I (2342) es8388: ADC/microphones OFF
+I (2342) touch: Calibration: do not touch pads for 1 second
+I (2342) i2s: TX clocks: source=160000000 MCLK=11289537 BCLK=2822400 Fs=44100 capture=0 (32-bit data and slots)
+I (2352) audio: Path: MUSIC at 44100 Hz
+I (3282) touch: PLAY GPIO33 baseline=1277
+I (3282) touch: SET GPIO32 baseline=1276
+I (3282) touch: VOL+ GPIO27 baseline=1153
+I (3282) touch: VOL- GPIO13 baseline=836
+I (3282) touch: Ready: PLAY = answer / hang up / play-pause, SET = next (hold 2 s: reject / disconnect, hold 6 s: Wi-Fi setup), VOL +/-
+W (3312) BT_BTC: A2DP Enable with AVRC
+I (3352) bt: READY: music (A2DP) + calls (HFP). Select 'wifi blu' in the phone's Bluetooth list
+I (3362) bt: 2 bonded phone(s); will try 2c:d0:66:b0:8c:74 (last connected) in 3 s, then the others in turn
+I (3382) wifi:wifi driver task: 3ffed794, prio:23, stack:6656, core=0
+I (3382) wifi:wifi firmware version: e12a754
+I (3382) wifi:wifi certification version: v7.0
+I (3382) wifi:config NVS flash: enabled
+I (3382) wifi:config nano formatting: disabled
+I (3392) wifi:Init data frame dynamic rx buffer num: 8
+I (3392) wifi:Init static rx mgmt buffer num: 5
+I (3402) wifi:Init management short buffer num: 32
+I (3402) wifi:Init dynamic tx buffer num: 8
+I (3412) wifi:Init static rx buffer size: 1600
+I (3412) wifi:Init static rx buffer num: 6
+I (3412) wifi:Init dynamic rx buffer num: 8
+I (3422) wifi_init: accept mbox: 6
+I (3422) wifi_init: tcpip mbox: 32
+I (3422) wifi_init: udp mbox: 6
+I (3432) wifi_init: tcp mbox: 6
+I (3432) wifi_init: tcp tx win: 5760
+I (3432) wifi_init: tcp rx win: 5760
+I (3442) wifi_init: tcp mss: 1440
+I (3442) wifi_init: WiFi/LWIP prefer SPIRAM
+I (3442) wifi:Set ps type: 1, coexist: 0
+
+I (3452) wifi:mode : sta (08:3a:f2:31:29:3c)
+I (3452) wifi:enable tsf
+I (3462) wifi: No network saved: opening the setup hotspot
+I (3462) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (3472) wifi:Total power save buffer number: 4
+I (3472) wifi:Init max length of beacon: 752/752
+I (3472) wifi:Init max length of beacon: 752/752
+I (3492) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (3492) wifi:Total power save buffer number: 4
+I (3502) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (3502) example_dns_redirect_server: Socket created
+I (3502) example_dns_redirect_server: Socket bound, port 53
+I (3512) example_dns_redirect_server: Waiting for data
+I (3512) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (3532) boot: Heap before web server: internal free=57243 bytes (largest block 55296), PSRAM free=4138936 bytes
+I (3542) web: Control page on port 80
+I (3542) console: Keys: a answer, h hangup/reject, m redial, c connect bonded phone, x disconnect, v list bonds, f forget bonds, i status, t rintone test, l/r/z/b tones, ]/[ DAC +-1.5 dB, 0 reset DAC + self-test, k power self-test, w Wi-Fi status, W Wi-Fi setup hotspot, n forget Wi-Fi network
+I (3552) boot: Initialized; running from ota_0; free heap=4182407 bytes (internal 44023)
+I (3572) main_task: Returned from app_main()
+W (3602) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 1). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (4012) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 2). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 msI (4362) bt: Radio: connectable, DISCOVERABLE (visible in the phone's list)
+W (4422) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 3). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (4822) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 4). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (5242) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 5). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (5652) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 6). DAC profile stays at P0 (-12.0 dB). No reset, phone stays connected; audio resumes in 400 ms
+W (6062) audio: BROWNOUT GUARD: 3.3 V rail reached 2.80 V, amplifier cut in the interrupt (event 7). DAC profile stays at P0 (-12.0 ). No reset, phone stays connected; audio resumes in 400 ms
+W

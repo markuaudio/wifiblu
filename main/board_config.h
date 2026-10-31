@@ -97,4 +97,11 @@
 #define WIFI_SETUP_TIMEOUT_S 600
 #define WIFI_SETUP_HOLD_S 6              // SET pad hold (2 s = disconnect still fires first)
 #define WIFI_RECONNECT_PERIOD_S 10       // station: retry the saved network forever
+// Wi-Fi transmit power cap in 0.25 dB units (esp_wifi_set_max_tx_power): 34 = 8.5 dBm,
+// 44 = 11 dBm, 78 = 19.5 dBm (chip default). The LyraT 5 V -> 3.3 V path sags on
+// 20 dBm bursts while Bluetooth is up (A/B 2026-10-30: BT-only v1.0.1 runs clean on
+// the same supply, BT + Wi-Fi at full power browns out every 0.4 s and resets in
+// 12-21 s; 34 and 44 both ran clean for 60-120 s). 44 keeps some range for the
+// station link to a home router; the phone is next to the speaker during setup.
+#define WIFI_MAX_TX_POWER_QDBM 44
 #define OTA_VALID_AFTER_S 45             // new image confirms itself once Bluetooth is ready and this time passed

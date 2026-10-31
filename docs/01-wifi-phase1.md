@@ -51,6 +51,40 @@ Settings live in `main/board_config.h` (Wi-Fi block at the end): hostname, hotsp
 | T11 | SET hold 6 s during music | disconnect at 2 s, hotspot at 6 s |
 | T12 | Hotspot timeout | closes after 10 min by itself |
 
+## Test run 2026-10-30 (first flash)
+
+Board on COM6, powered only through the UART Micro-USB from the PC (no charger on the POWER port).
+
+- Flash with cable: OK. New partition table written, bootloader loads from `ota_0` (offset 0x20000), project name `wifiblu`.
+- Boot stops at `phy_init: phy_version ...` (radio power-on) and the chip restarts with `rst:0x1 (POWERON_RESET)`, about once per second, 37 times in 40 s. No panic, no backtrace, no brownout message: the IMP809 supervisor pulls EN when the 3.3 V rail collapses (see bleaudiocall `docs/07`).
+- A/B check: the released bleaudiocall v1.0.1 image, which ran fine on 2026-10-27, was flashed back and shows the same loop at the same point. So the loop is the supply, not the Wi-Fi code. wifiblu was flashed again afterwards; the board is left with wifiblu in `ota_0`.
+- Possible aggravating factor: the `phy_init` data partition moved from 0xf000 to 0x11000, so RF calibration data is empty and a full calibration (longer, higher current) runs on every boot until one boot completes.
+
+- Second round, same day, after the user changed the supply: still the same loop (reset 0.28 s after `phy_version`, cycle 1.1 s; the 0.28 s matches the IMP809 reset hold, so the supervisor resets the chip, the charger does not drop out).
+- `hello_world` (ESP-IDF example, no radio) flashed for comparison: runs for 30 s with no unexpected reset, 304 KB free heap. The board itself is fine; only the radio power-on kills the rail.
+- Software mitigation tried: `CONFIG_ESP_PHY_RF_CAL_NONE` + `CONFIG_ESP_PHY_MAX_TX_POWER=8` (no boot-time RF calibration, lower TX power). No change at all: 41 resets in 45 s. Reverted; the committed `sdkconfig` is untouched and the board holds the unmodified wifiblu build (verified with `esptool verify-flash`).
+- Conclusion: nothing in firmware can fix this. The 5 V -> 3.3 V path on the board (D3 1N5819, Q2, power switch, LD1117; see bleaudiocall `docs/07`) cannot deliver the radio start-up current. Either the supply/cable is still weak, or that path was degraded by the earlier high-current amplifier sessions. A multimeter on the 3.3 V and 5 V rails during boot would settle it.
+
+
+## Test run 2026-10-30, third round (PSRAM)
+
+- Build + flash via `tools/Build.ps1` / `tools/Flash.ps1` (COM6). The board now gets past `phy_init` on every other boot (the previous boot's reset leaves the rail charged), so the firmware could be watched running for the first time.
+- Firmware bug found: with Bluedroid Classic + Wi-Fi AP/STA + lwIP up, internal heap before `web_ui_start()` was **4.5 KB** (largest block 4.3 KB), so `httpd_start` failed with `ESP_ERR_HTTPD_TASK` and `ESP_ERROR_CHECK` aborted the app (`SW_CPU_RESET` loop). Static RAM per component (`idf.py size-components`): Bluedroid 41 KB, net80211 11 KB.
+- Fix: PSRAM enabled, as planned in this doc (`CONFIG_SPIRAM`, `SPIRAM_USE_MALLOC`, `SPIRAM_TRY_ALLOCATE_WIFI_LWIP`, `BT_ALLOCATION_FROM_SPIRAM_FIRST`, `ESP32_REV_MIN_3` so the cache workaround is not compiled in; Bluedroid `BT_ACL_CONNECTIONS` 4 -> 2). The music ring buffer is created in PSRAM (`xRingbufferCreateWithCaps`, falls back to internal RAM). `web_ui_start()` failure is now logged, not fatal: Bluetooth audio keeps working without the page. Boot log prints internal + PSRAM heap before the web server.
+- Result (`docs/2026-10-30-run-psram.log`): `Found 8MB PSRAM device` (4 MB mapped, normal on ESP32), memory test OK, min chip rev v3.0. Internal heap before web server **57 KB** (largest block 56 KB), PSRAM 4.0 MB free. `Control page on port 80`, DNS redirector on 53, hotspot `wifi blu setup` up, Bluetooth READY + discoverable, reconnect to the last phone attempted. Internal heap after init 44 KB.
+- Still resetting at this point: the brownout guard fires every 410 ms (3.3 V rail at 2.80 V with the amplifier off) and the IMP809 resets the chip after 12-21 s (`POWERON_RESET`, 3 in 40 s). Cause found in the fourth round below: Wi-Fi transmit power, not the supply.
+- Image size 1.50 MB (53% of the 3 MB slot free). Not committed yet.
+
+
+## Test run 2026-10-30, fourth round (Wi-Fi TX power): runs clean
+
+- The user pointed out that bleaudiocall v1.0.1 ran on this same cable and supply. A/B on the spot (`docs/2026-10-30-ab-bleaudiocall-v101.log`): the v1.0.1 release image runs 40 s clean, zero brownout-guard trips apart from the power self-test tone at P4. So the supply carries the Bluetooth-only load; what it cannot carry is Bluetooth **plus** Wi-Fi at the chip's default 19.5 dBm transmit power (AP beacons every 100 ms + continuous receive). The earlier "not firmware" conclusion in rounds 1-3 was wrong: the rail was marginal all along and the full-power Wi-Fi bursts pushed it over.
+- Fix: `WIFI_MAX_TX_POWER_QDBM` in `main/board_config.h`, applied with `esp_wifi_set_max_tx_power()` after every `esp_wifi_start()` and mode change (`apply_tx_power()` in `main/wifi_link.c`, logs the cap). Data: 34 (8.5 dBm) 40 s + 120 s clean, 0 resets, 0 guard trips (`docs/2026-10-30-run-txpower8.log`, `-120s.log`); 44 (11 dBm) 60 s clean (`docs/2026-10-30-run-txpower11.log`). **44 is the default** (keeps range for the station link; 9 dB below the chip maximum). The driver reports 10.5 dBm for 44 and 8.25 dBm for 34.
+- State of the board now: wifiblu in `ota_0` with PSRAM + 11 dBm cap, Bluetooth discoverable, hotspot `wifi blu setup` open, control page on port 80. Idle test only (no phone paired, no music): the music + amplifier load is still covered by the power self-test and the brownout guard from v1.0.1.
+- Not committed yet.
+
+**Next:** T1 (bonds, DAC limit) and T2 (join `wifi blu setup` from the phone, page at http://192.168.4.1/), then T3-T12. Watch `brownout guard events since boot` during music with the hotspot open; if it climbs, drop `WIFI_MAX_TX_POWER_QDBM` to 34. A 5 V 2 A charger on the POWER port still gives more headroom for loud music.
+
 ## Not in Phase 1 (hardening, next)
 
 Page password; signed OTA images (secure boot) + flash encryption; factory reset from a button; production self-test page; per-unit name from the MAC.

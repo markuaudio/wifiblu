@@ -75,6 +75,14 @@ static void mdns_start(void)
 }
 
 // ------------------------------------------------------------- station side
+// Must run after every esp_wifi_start() and mode change: the driver resets the cap.
+static void apply_tx_power(void)
+{
+    esp_err_t err = esp_wifi_set_max_tx_power(WIFI_MAX_TX_POWER_QDBM);
+    int8_t p = 0; esp_wifi_get_max_tx_power(&p);
+    ESP_LOGI(TAG, "TX power cap %.2f dBm (%s)", p / 4.0, esp_err_to_name(err));
+}
+
 static void apply_sta_config(void)
 {
     wifi_config_t cfg = {0};
@@ -209,6 +217,7 @@ void wifi_link_start_setup(void)
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_APSTA));
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &ap));
     ESP_ERROR_CHECK(esp_wifi_start());
+    apply_tx_power();
 
     // DHCP option 114 (captive portal URI) for phones that honour it, and a DNS
     // server that answers every name with our own address for the ones that probe.
@@ -240,6 +249,7 @@ void wifi_link_stop_setup(void)
     bool creds;
     portENTER_CRITICAL(&lock); creds = s.have_credentials; s.mode = creds ? WIFI_MODE_STATION : WIFI_MODE_IDLE; s.setup_ends_at = 0; portEXIT_CRITICAL(&lock);
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA)); // station keeps running; the hotspot goes away
+    apply_tx_power();
     ESP_LOGI(TAG, "Setup hotspot closed; %s", creds ? "station mode" : "no network saved (SET hold reopens setup)");
 }
 
@@ -359,10 +369,12 @@ esp_err_t wifi_link_init(void)
         ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
         apply_sta_config();
         ESP_ERROR_CHECK(esp_wifi_start());
+    apply_tx_power();
         ESP_LOGI(TAG, "Saved network '%s': joining as station (SET hold %d s or 'W' opens the setup hotspot)", s.ssid, WIFI_SETUP_HOLD_S);
     } else {
         ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
         ESP_ERROR_CHECK(esp_wifi_start());
+    apply_tx_power();
         ESP_LOGI(TAG, "No network saved: opening the setup hotspot");
         wifi_link_start_setup();
     }

@@ -20,6 +20,7 @@
 #include "web_ui.h"
 #include "esp_ota_ops.h"
 #include "esp_timer.h"
+#include "esp_heap_caps.h"
 
 // Touch pads: a call always wins over music.
 void app_key(app_key_t key)
@@ -124,12 +125,18 @@ void app_main(void)
     ESP_ERROR_CHECK(touch_buttons_init());
     ESP_ERROR_CHECK(bt_core_start());
     ESP_ERROR_CHECK(wifi_link_init()); // after Bluetooth: coexistence takes the radio in turns
-    ESP_ERROR_CHECK(web_ui_start());
+    ESP_LOGI("boot", "Heap before web server: internal free=%u bytes (largest block %u), PSRAM free=%u bytes",
+             (unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT),
+             (unsigned)heap_caps_get_largest_free_block(MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT),
+             (unsigned)heap_caps_get_free_size(MALLOC_CAP_SPIRAM));
+    // The control page is optional: if it cannot start, the speaker still works over Bluetooth.
+    if (web_ui_start() != ESP_OK) ESP_LOGE("boot", "Control page not started; Bluetooth audio continues");
     esp_timer_handle_t confirm;
     esp_timer_create_args_t args = {.callback = ota_confirm_cb, .name = "ota_confirm"};
     ESP_ERROR_CHECK(esp_timer_create(&args, &confirm));
     ESP_ERROR_CHECK(esp_timer_start_once(confirm, OTA_VALID_AFTER_S * 1000000ULL));
     xTaskCreate(console_task, "console", 3584, NULL, 2, NULL);
     const esp_partition_t *run = esp_ota_get_running_partition();
-    ESP_LOGI("boot", "Initialized; running from %s; free heap=%lu bytes", run ? run->label : "?", (unsigned long)esp_get_free_heap_size());
+    ESP_LOGI("boot", "Initialized; running from %s; free heap=%lu bytes (internal %u)", run ? run->label : "?", (unsigned long)esp_get_free_heap_size(),
+             (unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT));
 }

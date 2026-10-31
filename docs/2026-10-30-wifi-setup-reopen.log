@@ -1,0 +1,22 @@
+I (777921) wifi:mode : sta (08:3a:f2:31:29:3c) + softAP (08:3a:f2:31:29:3d)
+I (777921) wifi:Total power save buffer number: 4
+I (777921) wifi:Init max length of beacon: 752/752
+I (777921) wifi:Init max length of beacon: 752/752
+I (777931) wifi:Total power save buffer number: 4
+I (777931) wifi TX power cap 10.50 dBm (ESP_OK)
+I (777941) wifi: SETUP: join hotspot 'wifi blu setup' (open) on the phone; the setup page opens by itself (or http://192.168.4.1/). Closes in 10 min
+I (777941) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (777961) example_dns_redirect_server: Socket created
+I (777961) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+E (777971) example_dns_redirect_server: Socket unable to bind: errno 112
+I (777981) example_dns_redirect_server: Socket bound, port 53
+I (777981) example_dns_redirect_server: Waiting for data
+I (779461) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (779461) audio: music buffer=0 B drops=0 underruns=5 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (779471) audio: brownout guard events since boot: 11
+I (784481) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (784481) audio: music buffer=0 B drops=0 underruns=5 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (784491) audio: brownout guard events since boot: 11
+I (789491) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (789491) audio: music buffer=0 B drops=0 underruns=5 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (789501) audio: brownout guard events since boot: 11

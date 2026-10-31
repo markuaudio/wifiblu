@@ -69,3 +69,18 @@ CONFIG_ESP_WIFI_DYNAMIC_RX_BUFFER_NUM=8
 CONFIG_ESP_WIFI_DYNAMIC_TX_BUFFER_NUM=8
 CONFIG_ESP_WIFI_AMPDU_TX_ENABLED=n
 CONFIG_ESP_WIFI_AMPDU_RX_ENABLED=n
+
+# ---- PSRAM (2026-10-30) ----
+# First run on the board: Bluedroid Classic + Wi-Fi AP/STA + lwIP left 4.5 KB of
+# internal RAM, so the HTTP server task could not be created. The WROVER module's
+# PSRAM takes the big dynamic blocks (Bluetooth host, Wi-Fi/lwIP buffers, music
+# ring); task stacks and DMA buffers stay internal. Chip rev >= 3 drops the
+# PSRAM cache workaround (the board's chip is v3.0; WROVER-E modules are rev 3).
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_USE_MALLOC=y
+CONFIG_SPIRAM_TRY_ALLOCATE_WIFI_LWIP=y
+CONFIG_SPIRAM_IGNORE_NOTFOUND=y
+CONFIG_BT_ALLOCATION_FROM_SPIRAM_FIRST=y
+CONFIG_ESP32_REV_MIN_3=y
+# Bluedroid host tables for 2 links, same as the controller (was 4): less static RAM.
+CONFIG_BT_ACL_CONNECTIONS=2

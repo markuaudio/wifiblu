@@ -1,0 +1,31 @@
+I (1022151) bt: Disconnect requested: dropping music + calls, bond kept, no auto-reconnect until reboot or 'c'
+W (1022151) BT_HCI: hci cmd send: unsniff: hdl 0x81
+W (1022261) BT_HCI: hcif mode change: hdl 0x81, mode 0, intv 0, status 0x0
+W (1022281) BT_RFCOMM: port_rfc_closed RFCOMM connection in server:1 state 3 closed: Closed (res: 19)
+W (1022291) BT_HCI: hci cmd send: sniff: hdl 0x81, intv(30 54)
+W (1022311) BT_APPL: BTA_HF_CLIENT_SCO_SHUTDOWN_ST: Ignoring event 3
+I (1022311) call: Link state 0 (3 = ready for calls), phone features 0x0
+I (1022321) bt: Calls (HFP) disconnected from 2c:d0:66:b0:8c:74
+W (1022331) BT_HCI: hcif mode change: hdl 0x81, mode 2, intv 54, status 0x0
+W (1022341) BT_HCI: hcif mode change: hdl 0x81, mode 0, intv 0, status 0x0
+W (1022651) BT_HCI: hci cmd send: disconnect: hdl 0x81, rsn:0x13
+W (1022661) BT_HCI: hci cmd send: sniff: hdl 0x81, intv(30 54)
+W (1022661) BT_HCI: opcode=0x0803, status= 02: No Connection
+I (1022661) bt: Music (A2DP) disconnected from 2c:d0:66:b0:8c:74
+W (1022681) BT_HCI: hcif disc complete: hdl 0x81, rsn 0x16 dev_find 1
+I (1022681) bt: Radio link closed by 2c:d0:66:b0:8c:74: reason 0x116 (0x13 phone, 0x16 us, 0x08 timeout/out of range)
+I (1023061) wifi: Join request for 'Marku-Media-Solution'
+I (1023371) bt: Radio: connectable, DISCOVERABLE (visible in the phone's list)
+I (1025221) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (1025231) audio: music buffer=0 B drops=0 underruns=7 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (1025231) audio: brownout guard events since boot: 11
+I (1025681) wifi:primary chan differ, old=6, new=3, start CSA timer
+I (1026141) wifi:switch to channel 3
+I (1026141) wifi:ap channel adjust o:6,1 n:3,1
+I (1026141) wifi:new:<3,1>, old:<6,0>, ap:<3,1>, sta:<0,0>, prof:6, snd_ch_cfg:0x0
+I (1026151) wifi:state: init -> auth (0xb0)
+I (1026151) wifi:state: auth -> assoc (0x0)
+I (1026161) wifi:state: assoc -> run (0x10)
+I (1030241) audio: MUSIC 44100 Hz PA=0 in_peak=0 out_peak=0 mic_peak=0 frames=0 limited=0 P0
+I (1030241) audio: music buffer=0 B drs=0 underruns=7 | call rx_drops=0 tx_drops=0 underruns=0 | i2s_errors=0
+I (1030251) audio: brownout guard events since boot: 11

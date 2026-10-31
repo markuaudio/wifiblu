@@ -4,6 +4,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/ringbuf.h"
+#include "esp_heap_caps.h"
 #include "driver/gpio.h"
 #include "esp_log.h"
 #include "esp_timer.h"
@@ -598,7 +599,10 @@ esp_err_t audio_engine_init(void)
     ESP_ERROR_CHECK(gpio_config(&pins));
     gpio_set_level(BOARD_PA_ENABLE, 0);
     ESP_ERROR_CHECK(es8388_init());
-    music_ring = xRingbufferCreate(MUSIC_BUFFER_BYTES, RINGBUF_TYPE_NOSPLIT);
+    // 32 KB jitter buffer: PSRAM when the module has it (internal RAM is tight with
+    // Bluetooth + Wi-Fi up), internal RAM otherwise. The 6 KB call rings stay internal.
+    music_ring = xRingbufferCreateWithCaps(MUSIC_BUFFER_BYTES, RINGBUF_TYPE_NOSPLIT, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
+    if (!music_ring) music_ring = xRingbufferCreate(MUSIC_BUFFER_BYTES, RINGBUF_TYPE_NOSPLIT);
     call_rx_ring = xRingbufferCreate(CALL_RX_BUFFER_BYTES, RINGBUF_TYPE_BYTEBUF);
     call_tx_ring = xRingbufferCreate(CALL_TX_BUFFER_BYTES, RINGBUF_TYPE_BYTEBUF);
     if (!music_ring || !call_rx_ring || !call_tx_ring) return ESP_ERR_NO_MEM;
